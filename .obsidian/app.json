@@ -3,5 +3,7 @@
   "attachmentFolderPath": "attachments",
   "newFileLocation": "folder",
   "newFileFolderPath": "notes",
-  "showInlineTitle": false
+  "showInlineTitle": false,
+  "newLinkFormat": "absolute",
+  "useMarkdownLinks": true
 }
