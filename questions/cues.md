@@ -7,4 +7,6 @@
 - [ ] Check for default credentials
 - [ ] Check for rate limiting
 - [ ] Check for account lockout
+- [ ] Test for [[SQLi]]
+- [ ] 
 
