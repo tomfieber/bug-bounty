@@ -2,5 +2,6 @@
   "alwaysUpdateLinks": true,
   "attachmentFolderPath": "attachments",
   "newFileLocation": "folder",
-  "newFileFolderPath": "notes"
+  "newFileFolderPath": "notes",
+  "showInlineTitle": false
 }
