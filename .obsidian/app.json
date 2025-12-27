@@ -4,6 +4,6 @@
   "newFileLocation": "folder",
   "newFileFolderPath": "notes",
   "showInlineTitle": false,
-  "newLinkFormat": "absolute",
+  "newLinkFormat": "relative",
   "useMarkdownLinks": true
 }

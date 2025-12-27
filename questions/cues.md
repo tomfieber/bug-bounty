@@ -7,7 +7,7 @@
 - [ ] Check for default credentials
 - [ ] Check for rate limiting
 - [ ] Check for account lockout
-- [ ] Test for [SQLi](notes/SQLi.md)
+- [ ] Test for [SQLi](../notes/SQLi.md)
 - [ ] Check for username enumeration
 	- [ ] Error messages
 	- [ ] Timing disparity
