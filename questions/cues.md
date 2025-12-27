@@ -58,8 +58,6 @@
 
 - [ ] Check [CORS](../notes/CORS.md)
 - [ ] Try to send a `POST` or `PUT` request with the data in the body to see if it's possible to update
-- [ ] 
-
 
 # Query strings
 
