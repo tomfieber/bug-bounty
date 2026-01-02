@@ -1,4 +1,4 @@
-## Broken Access Control/IDOR
+# Broken Access Control/IDOR
 
 - [ ] Understand the context of the app
 - [ ] Read all client-side JS; check for:
@@ -22,19 +22,19 @@
 - [ ] Log request + response (status + body snippet) - that becomes your PoC.
 - [ ] If UUIDs are used, check if they're leaked in other parts of the app or online (e.g., GitHub, etc.)
 
-### Trailing slashes
+## Trailing slashes
 
 ```
 /api/v3/users/5/
 ```
 
-### Double slashes
+## Double slashes
 
 ```
 /api/v3//users//5
 ```
 
-### Version downgrade
+## Version downgrade
 
 If the original request is using `v3` try downgrading to `v2`
 
@@ -43,24 +43,24 @@ If the original request is using `v3` try downgrading to `v2`
 /api/v2/users/5
 ```
 
-### Subpath/Endpoint variations
+## Subpath/Endpoint variations
 
 Try adding other endpoints like `/profile` `/account`, `/details`, etc.
 
-### Try adding additional users
+## Try adding additional users
 
 ```
 /api/v3/users?id=5,6
 ```
 
-### Query vs. Param
+## Query vs. Param
 
 ```
 /api/v3/users/5
 /api/v3/users?id=5
 ```
 
-### Type confusion
+## Type confusion
 
 Check if there are differences in the parsing engine
 
@@ -70,7 +70,7 @@ Check if there are differences in the parsing engine
 /api/v3/users/abc5
 ```
 
-### Leading zeros / Hex / other formats
+## Leading zeros / Hex / other formats
 
 Check if different numeric formats bypass the 403
 
@@ -79,7 +79,7 @@ Check if different numeric formats bypass the 403
 /api/v3/users/0x19
 ```
 
-### NULL / termination / control characters
+## NULL / termination / control characters
 
 Check to see if control characters can bypass checks
 
@@ -87,7 +87,7 @@ Check to see if control characters can bypass checks
 /api/v3/users/5%00
 ```
 
-### Header / proxy-based bypass
+## Header / proxy-based bypass
 
 ```
 GET /api/v3/users/5
@@ -95,7 +95,7 @@ Host: target
 X-Original-URL: /api/v3/users/4
 ```
 
-### Unicode  / encoded space
+## Unicode  / encoded space
 
 ```
 /api/v3/users/5
