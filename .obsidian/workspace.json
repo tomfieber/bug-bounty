@@ -29,12 +29,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/XXE.md",
+                "file": "notes/JWT.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "XXE"
+              "title": "JWT"
             }
           }
         ],
@@ -95,7 +95,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "dc2105201abf800f",
@@ -207,6 +208,7 @@
   },
   "active": "840c5b87ec83091c",
   "lastOpenFiles": [
+    "notes/XXE.md",
     "notes/XSS.md",
     "notes/WAF-bypass.md",
     "notes/SSTI.md",
@@ -214,7 +216,6 @@
     "notes/broken-access-control.md",
     "questions/cues.md",
     "notes/open-redirects.md",
-    "notes/XXE.md",
     "notes/SSRF.md",
     "notes/SQLi.md",
     "notes/recon.md",
