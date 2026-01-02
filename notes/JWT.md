@@ -4,6 +4,7 @@
 
 <details>
 	<summary>jwt_tool menu</summary>
+	
 	```
 	➜ jwt_tool --help
 	WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
@@ -97,6 +98,7 @@
 	If you don't have a token, try this one:
 	eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6InRpY2FycGkifQ.bsSwqj2c2uI9n7-ajmi3ixVGhPUiY7jO9SUn9dm15Po
 	```
+	
 </details>
 
 # Checks
