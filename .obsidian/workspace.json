@@ -4,18 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "ef2a82c434d90970",
+        "id": "e53769f46c46feaa",
         "type": "tabs",
         "children": [
           {
-            "id": "fb6f736fd6f58381",
+            "id": "9786bf65450959f3",
             "type": "leaf",
             "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
                 "file": "questions/cues.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "pinned": true,
@@ -24,17 +24,17 @@
             }
           },
           {
-            "id": "90dde63938af1d03",
+            "id": "840c5b87ec83091c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/CORS.md",
+                "file": "notes/broken-access-control.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CORS"
+              "title": "broken-access-control"
             }
           }
         ],
@@ -172,13 +172,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "notes/CORS.md",
+                "file": "questions/cues.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of CORS"
+              "title": "Outline of cues"
             }
           }
         ],
@@ -205,31 +205,31 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "90dde63938af1d03",
+  "active": "840c5b87ec83091c",
   "lastOpenFiles": [
-    "notes/SSRF.md",
-    "notes/CORS.md",
-    "notes/NoSQLi.md",
     "questions/cues.md",
+    "notes/broken-access-control.md",
+    "notes/CORS.md",
+    "notes/open-redirects.md",
+    "notes/XXE.md",
+    "notes/XSS.md",
+    "notes/WAF-bypass.md",
+    "notes/SSTI.md",
+    "notes/SSRF.md",
     "notes/SQLi.md",
     "notes/recon.md",
-    "notes/broken-access-control.md",
-    "notes/JWT.md",
     "notes/postMessage.md",
-    "attachments/SSRF/image.png",
+    "notes/NoSQLi.md",
+    "notes/JWT.md",
+    "notes/file-inclusion.md",
     "notes/CSRF.md",
+    "attachments/SSRF/image.png",
     "attachments/SSRF",
-    "notes/XXE.md",
-    "notes/WAF-bypass.md",
-    "notes/XSS.md",
     "attachments/XSS",
     "notes/assets/__temp__XSS",
     "attachments/XSS/image.png",
     "notes/assets/xss",
     "notes/assets",
-    "notes/file-inclusion.md",
-    "notes/SSTI.md",
-    "notes/open-redirects.md",
     "attachments",
     "notes",
     "questions"

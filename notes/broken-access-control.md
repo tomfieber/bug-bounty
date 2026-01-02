@@ -1,34 +1,93 @@
-## Definition of Terms
+## Broken Access Control/IDOR
 
-**Broken Object Level Authorization** 
-: Being able to see something you shouldn't be able to see
+- [ ] Understand the context of the app
+- [ ] Find the JSON/API endpoints (not the rendered HTML) - that’s your surface.
+- [ ] Try cheap, low-noise tweaks first: trailing slash, double slash, subpaths, query params.
+- [ ] Test version downgrades - old APIs are gold.
+- [ ] Try type/format tricks: strings, leading zeros, hex.
+- [ ] Try encoding tricks: `%00`, `%20`, control chars.
+- [ ] Combine tricks when single tests fail.
+- [ ] Log request + response (status + body snippet) - that becomes your PoC.
 
-**Broken Functional Level Authorization** 
-: Being able to do something you shouldn't be able to do
+### Checks to bypass 403s
 
-**Insecure Direct Object Reference** 
-: Kind of an umbrella term
+#### Trailing slashes
 
-## Checks
+```
+/api/v3/users/5/
+```
 
-- [ ] Understand how the application works
-    - How does it fetch/create/modify/delete data?
-- [ ] Look for numerical id's in requests
-    - URL query string
-    - POST body
-    - etc.
-- [ ] Test with two users and swap ids to see if you can access the other user's data
-- [ ] Look for any encrypted/encoded data that may be used to fetch data.
-    - Try to understand how it's created and see if we can spoof it
-- [ ] Check to see if there is a way to leak the UUID of the other user, if used.
-    - Report a user
-    - Look at the profile image
-    - Any other way of interacting with a user
-- [ ] Use a plugin like autorize to help automate testing
-- [ ] Can a low user perform admin actions
-- [ ] Are boundaries between roles properly enforced?
-    - Be sure to check the actual API calls, not just what is in the browser.
-- [ ] Check VERBS besides just GET
-    - Particularly in state-changing actions
+#### Double slashes
 
-> [!warning] Not every IDOR/BAC constitutes a security vulnerability. If the only thing leaked is information that is already accessible on the site, then it's not a valid vulnerability. Be sure to carefully review the impact for any IDOR/BAC you identify to make sure that it's an actual vulnerability.
+```
+/api/v3//users//5
+```
+
+#### Version downgrade
+
+If the original request is using `v3` try downgrading to `v2`
+
+```
+/api/v3/users/5
+/api/v2/users/5
+```
+
+#### Subpath/Endpoint variations
+
+Try adding other endpoints like `/profile` `/account`, `/details`, etc.
+
+#### Try adding additional users
+
+```
+/api/v3/users?id=5,6
+```
+
+#### Query vs. Param
+
+```
+/api/v3/users/5
+/api/v3/users?id=5
+```
+
+#### Type confusion
+
+Check if there are differences in the parsing engine
+
+```
+/api/v3/users/5
+/api/v3/users/"5"
+/api/v3/users/abc5
+```
+
+#### Leading zeros / Hex / other formats
+
+Check if different numeric formats bypass the 403
+
+```
+/api/v3/users/025
+/api/v3/users/0x19
+```
+
+#### NULL / termination / control characters
+
+Check to see if control characters can bypass checks
+
+```
+/api/v3/users/5%00
+```
+
+#### Header / proxy-based bypass
+
+```
+GET /api/v3/users/5
+Host: target 
+X-Original-URL: /api/v3/users/4
+```
+
+#### Unicode  / encoded space
+
+```
+/api/v3/users/5
+/api/v3/users/5%20
+```
+
