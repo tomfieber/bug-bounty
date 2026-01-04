@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d3dea6d670361f28",
+        "id": "d1916011b5d05140",
         "type": "tabs",
         "children": [
           {
-            "id": "2af4629e93f80e32",
+            "id": "0e272372498ccd8a",
             "type": "leaf",
             "pinned": true,
             "state": {
@@ -24,7 +24,7 @@
             }
           },
           {
-            "id": "b21ea4bd5ac72aec",
+            "id": "7fdc3bf90cdc1960",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -205,12 +205,15 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "b21ea4bd5ac72aec",
+  "active": "7fdc3bf90cdc1960",
   "lastOpenFiles": [
-    "attachments/prototype-pollution/image-3.png",
-    "attachments/prototype-pollution/image-2.png",
     "questions/cues.md",
     "notes/prototype-pollution.md",
+    "attachments/prototype-pollution/image-6.png",
+    "attachments/prototype-pollution/image-5.png",
+    "attachments/prototype-pollution/image-4.png",
+    "attachments/prototype-pollution/image-3.png",
+    "attachments/prototype-pollution/image-2.png",
     "attachments/prototype-pollution/image-1.png",
     "attachments/prototype-pollution/image.png",
     "attachments/prototype-pollution",

