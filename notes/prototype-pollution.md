@@ -84,7 +84,7 @@ Placeholder
 
 ### DOM XSS via client-side prototype pollution
 
-![[image-1.png]]
+![searchlogger.js](../attachments/prototype-pollution/image-1.png)
 
 ```
 0a2c00e903b91645815ec10100cd001c.web-security-academy.net/?__proto__[transport_url]=data:,alert(1);//
