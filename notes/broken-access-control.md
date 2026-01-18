@@ -12,6 +12,7 @@
 	- [ ] Response params
 	- [ ] URI path params
 	- [ ] Headers
+- [ ] Test for type confusion -- int --> str, str --> int, etc.
 - [ ] Try quiet tweaks first: trailing slash, double slash, subpaths, query params.
 - [ ] Test version downgrades - old APIs are gold.
 - [ ] Try type/format tricks: strings, leading zeros, hex.

