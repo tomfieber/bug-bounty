@@ -43,12 +43,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "questions/cues.md",
+                "file": "notes/SSRF.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "cues"
+              "title": "SSRF"
             }
           }
         ],
@@ -186,13 +186,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "questions/cues.md",
+                "file": "notes/SSRF.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of cues"
+              "title": "Outline of SSRF"
             }
           }
         ],
@@ -221,6 +221,8 @@
   },
   "active": "fcc3424bee85ba55",
   "lastOpenFiles": [
+    "attachments/SSRF/image-1.png",
+    "questions/cues.md",
     "notes/client-side-path-traversal.md",
     "notes/postMessage.md",
     "notes/XSS.md",
@@ -247,8 +249,6 @@
     "notes/pwn-college/02-computing-101/05-assembly-crash-course/004-linear-equation-registers.md",
     "notes/pwn-college/02-computing-101/05-assembly-crash-course/003-add-to-register.md",
     "notes/pwn-college/02-computing-101/05-assembly-crash-course/001-set-register.md",
-    "notes/pwn-college/02-computing-101/05-assembly-crash-course/002-set-multiple-registers.md",
-    "notes/pwn-college/02-computing-101/04-hello-hackers/004-reading-data.md",
     "notes/pwn-college/01-linux-luminarium/04-digesting-documentation/attachments",
     "notes/pwn-college/01-linux-luminarium/02-pondering-paths/attachments",
     "notes/pwn-college/02-computing-101/05-assembly-crash-course",
