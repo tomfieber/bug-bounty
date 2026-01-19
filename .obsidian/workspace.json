@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "9822fc7b803b763d",
+        "id": "a3f8c0c408cb10e0",
         "type": "tabs",
         "children": [
           {
-            "id": "92a4076e09546ce7",
+            "id": "fb89660a4ec2977e",
             "type": "leaf",
             "pinned": true,
             "state": {
@@ -24,35 +24,21 @@
             }
           },
           {
-            "id": "fa714ebb9d8b9f69",
+            "id": "ec63b9e01f17360d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/postMessage.md",
+                "file": "notes/SSTI.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "postMessage"
-            }
-          },
-          {
-            "id": "fcc3424bee85ba55",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "notes/SSRF.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "SSRF"
+              "title": "SSTI"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -186,13 +172,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "notes/SSRF.md",
+                "file": "notes/client-side-path-traversal.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of SSRF"
+              "title": "Outline of client-side-path-traversal"
             }
           }
         ],
@@ -219,22 +205,28 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "fcc3424bee85ba55",
+  "active": "ec63b9e01f17360d",
   "lastOpenFiles": [
-    "attachments/SSRF/image-1.png",
+    "notes/SSRF.md",
+    "notes/SQLi.md",
+    "notes/recon.md",
+    "notes/postMessage.md",
+    "notes/prototype-pollution.md",
+    "notes/RCE.md",
+    "notes/WAF-bypass.md",
     "questions/cues.md",
     "notes/client-side-path-traversal.md",
-    "notes/postMessage.md",
+    "notes/command-injection.md",
+    "notes/XXE.md",
+    "notes/CORS.md",
+    "attachments/SSRF/image-1.png",
     "notes/XSS.md",
-    "notes/WAF-bypass.md",
     "notes/TLS.md",
     "notes/SSTI.md",
     "notes/JWT.md",
     "notes/open-redirects.md",
     "notes/NoSQLi.md",
-    "notes/command-injection.md",
     "notes/broken-access-control.md",
-    "notes/CORS.md",
     "pwn-college/01-linux-luminarium/01-hello-hackers/003-command-history.md",
     "notes/pwn-college/01-linux-luminarium/04-digesting-documentation/attachments/Pasted image 20250916162842.png",
     "notes/pwn-college/01-linux-luminarium/02-pondering-paths/attachments/Pasted image 20250916042223.png",
@@ -244,11 +236,6 @@
     "notes/pwn-college/02-computing-101/05-assembly-crash-course/009-byte-extraction.md",
     "notes/pwn-college/02-computing-101/05-assembly-crash-course/008-efficient-modulo.md",
     "notes/pwn-college/02-computing-101/05-assembly-crash-course/007-set-upper-byte.md",
-    "notes/pwn-college/02-computing-101/05-assembly-crash-course/006-modulo-operation.md",
-    "notes/pwn-college/02-computing-101/05-assembly-crash-course/005-integer-division.md",
-    "notes/pwn-college/02-computing-101/05-assembly-crash-course/004-linear-equation-registers.md",
-    "notes/pwn-college/02-computing-101/05-assembly-crash-course/003-add-to-register.md",
-    "notes/pwn-college/02-computing-101/05-assembly-crash-course/001-set-register.md",
     "notes/pwn-college/01-linux-luminarium/04-digesting-documentation/attachments",
     "notes/pwn-college/01-linux-luminarium/02-pondering-paths/attachments",
     "notes/pwn-college/02-computing-101/05-assembly-crash-course",
@@ -265,7 +252,6 @@
     "attachments/prototype-pollution/image-5.png",
     "attachments/prototype-pollution/image-4.png",
     "attachments/prototype-pollution/image-3.png",
-    "attachments/prototype-pollution/image-2.png",
-    "attachments/prototype-pollution/image-1.png"
+    "attachments/prototype-pollution/image-2.png"
   ]
 }

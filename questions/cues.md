@@ -34,6 +34,8 @@
 
 - [ ] Can anyone register? 
 - [ ] What is required for registration?
+	- [ ] email, phone number, etc.
+	- [ ] Is it strictly enforced?
 - [ ] Check for mass assignment
 - [ ] Check for unicode normalization issues
 - [ ] Registration via API endpoints
