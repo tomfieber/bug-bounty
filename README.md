@@ -104,3 +104,8 @@ This is just a list of general checks around common application functionality.
 ## Invite Functionality
 
 - [ ] Can we control what org we join? 
+
+## JWT
+
+- [ ] Check [JWT](notes/jwt/jwt.md) cheatsheet
+- [ ] Can we re-use JWTs between systems (e.g., dev --> prod)? 

@@ -5,7 +5,6 @@
 <details>
 	<summary>jwt_tool menu</summary>
 	
-	```
 	➜ jwt_tool --help
 	WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
 	usage: jwt_tool.py [-h] [-b] [-t TARGETURL] [-r REQUEST] [-rt RATE] [-i]
@@ -97,7 +96,6 @@
 	
 	If you don't have a token, try this one:
 	eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6InRpY2FycGkifQ.bsSwqj2c2uI9n7-ajmi3ixVGhPUiY7jO9SUn9dm15Po
-	```
 	
 </details>
 
@@ -106,6 +104,10 @@
 - [ ] Does the server validate the signature?
 - [ ] Does it accept ‘none’ algorithm?
 - [ ] Is the JWT using a weak secret?
+
+```bash
+hashcat -m 16500 -a 0 jwt.txt `fzf-wordlists`
+```
 
 ```bash
 jwt_tool eyJraWQiOiIyNmRhODE1Yy04MmNjLTQxZjYtYWVmOS00ZDQ4OTkzYTAwZTYiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwb3J0c3dpZ2dlciIsImV4cCI6MTc2NDg5NzY0Nywic3ViIjoid2llbmVyIn0.ijIEqkAYKBnzXdVj0jpYfos_I5nvCye8S_oEwxKE76k -T -S hs256 -p secret1
