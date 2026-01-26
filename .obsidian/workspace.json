@@ -242,15 +242,15 @@
     "notes/SSRF/SSRF.md",
     "notes/recon/recon.md",
     "notes/broken-access-control/broken-access-control.md",
-    "attachments/SSRF/file-20260126070944562.png",
+    "notes/SSRF/attachments/file-20260126070944562.png",
     "notes/pwn-college/01-linux-luminarium/04-digesting-documentation/attachments/Pasted image 20250916162842.png",
     "notes/pwn-college/01-linux-luminarium/02-pondering-paths/attachments/Pasted image 20250916042223.png",
     "pwn-college/01-linux-luminarium/04-digesting-documentation/attachments/Pasted image 20250916162842.png",
     "pwn-college/01-linux-luminarium/02-pondering-paths/attachments/Pasted image 20250916042223.png",
-    "attachments/prototype-pollution/file-20260126070856983.png",
-    "attachments/prototype-pollution/file-20260126070856986.png",
-    "attachments/prototype-pollution/file-20260126070856985.png",
-    "attachments/prototype-pollution/file-20260126070856984 1.png",
-    "attachments/prototype-pollution/file-20260126070856986 1.png"
+    "notes/prototype-pollution/attachments/file-20260126070856983.png",
+    "notes/prototype-pollution/attachments/file-20260126070856986.png",
+    "notes/prototype-pollution/attachments/file-20260126070856985.png",
+    "notes/prototype-pollution/attachments/file-20260126070856984 1.png",
+    "notes/prototype-pollution/attachments/file-20260126070856986 1.png"
   ]
 }
