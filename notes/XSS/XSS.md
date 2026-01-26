@@ -90,7 +90,7 @@ Test message<script src=https://z2c8lw3i.eu4.ctfio.com/csp-upload/uploads/ac2712
 
 ## PostMessage
 
-[postMessage](postMessage.md)
+[postMessage](../postmessage/postMessage.md)
 
 A way for different browser windows to be able to talk to each other.
 - [ ] Check that postmessage orgin is validated
@@ -116,7 +116,7 @@ Note the mistake in the regex. The `.` character matches any character except fo
 
 [regex101](https://regex101.com/)
 
-![[../attachments/XSS/image.png]]
+![[../../attachments/XSS/file-20260126071026248.png]]
 
 
 Additionally, there's nothing to indicate that the `ctfio.com` is the end of the string, so something like `test.ctfio.com.hacker.com` would also work.

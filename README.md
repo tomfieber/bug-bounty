@@ -7,8 +7,8 @@
 - [ ] Check for default credentials
 - [ ] Check for rate limiting
 - [ ] Check for account lockout
-- [ ] Test for [SQLi](notes/SQLi.md)
-- [ ] Test for [NoSQLi](notes/NoSQLi.md)
+- [ ] Test for [SQLi](notes/SQLi/SQLi.md)
+- [ ] Test for [NoSQLi](notes/NoSQLi/NoSQLi.md)
 - [ ] Check for username enumeration
 	- [ ] Error messages
 	- [ ] Timing disparity
@@ -28,7 +28,7 @@
 - [ ] Is it using SAML/OAUTH?
 - [ ] Check for issues in client-side JS
 - [ ] Can we bypass auth with IP spoofing?
-- [ ] Check for [open redirects](notes/open-redirects.md)
+- [ ] Check for [open redirects](notes/open-redirects/open-redirects.md)
 
 # Registration
 
@@ -44,29 +44,29 @@
 
 - [ ] Is the input reflected anywhere on the page?
 	- [ ] What is the context?
-- [ ] Check for [XSS](notes/XSS.md)
-- [ ] Check for [SQLi](notes/SQLi.md)
-- [ ] Check for [SSTI](notes/SSTI.md)
+- [ ] Check for [XSS](notes/XSS/XSS.md)
+- [ ] Check for [SQLi](notes/SQLi/SQLi.md)
+- [ ] Check for [SSTI](notes/SSTI/SSTI.md)
 - [ ] What is the content-type of the request?
-	- [ ] Check for [XXE](notes/XXE.md)
+	- [ ] Check for [XXE](notes/XXE/XXE.md)
 	- [ ] Try converting JSON to XML
 
 # State-Changing Actions
 
-- [ ] Check for [CSRF](notes/CSRF.md)
-- [ ] Check for [BAC](notes/broken-access-control.md)
+- [ ] Check for [CSRF](notes/CSRF/CSRF.md)
+- [ ] Check for [BAC](notes/broken-access-control/broken-access-control.md)
 
 # Sensitive data returned
 
-- [ ] Check [CORS](notes/CORS.md)
+- [ ] Check [CORS](notes/CORS/CORS.md)
 - [ ] Try to send a `POST` or `PUT` request with the data in the body to see if it's possible to update
 
 # Query strings
 
-- [ ] Check for [file inclusion](notes/file-inclusion.md)
+- [ ] Check for [file inclusion](notes/file-inclusion/file-inclusion.md)
 - [ ] Check for SQLi
 - [ ] Check the network tab to see if the application is sending a secondary request to an internal API: `?user=123` --> `/api/user/123`
-	- [ ] Check for [client side path traversal](notes/client-side-path-traversal.md)
+	- [ ] Check for [client side path traversal](notes/client-side-path-traversal/client-side-path-traversal.md)
 
 # File Upload
 
@@ -98,3 +98,6 @@
     - If we can upload js and use that to bypass CSP with XSS in another part of the app
     - Is there another functionality that uses XML files from uploads? SVGs?
 
+# Invite Functionality
+
+- [ ] Can we control what org we join? 

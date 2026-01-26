@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d8a6d24574243e74",
+        "id": "fd0f847044d877a2",
         "type": "tabs",
         "children": [
           {
-            "id": "f3a0ad15a5f39578",
+            "id": "0af6b795a316a50f",
             "type": "leaf",
             "pinned": true,
             "state": {
@@ -24,17 +24,17 @@
             }
           },
           {
-            "id": "8dd959606c0c8727",
+            "id": "2a2772bf64895007",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/SQLi.md",
+                "file": "notes/SQLi/labs/lab1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SQLi"
+              "title": "lab1"
             }
           }
         ],
@@ -172,13 +172,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "notes/client-side-path-traversal.md",
+                "file": "notes/api-testing.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of client-side-path-traversal"
+              "title": "Outline of api-testing"
             }
           }
         ],
@@ -205,53 +205,52 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "8dd959606c0c8727",
+  "active": "a109116de73b4d62",
   "lastOpenFiles": [
     "README.md",
-    "notes/RCE.md",
-    "notes/NoSQLi.md",
-    "notes/file-inclusion.md",
-    "notes/CSRF.md",
-    "notes/CORS.md",
-    "notes/recon.md",
-    "notes/SSRF.md",
-    "questions/cues.md",
-    "notes/SSTI.md",
-    "notes/SQLi.md",
-    "notes/postMessage.md",
-    "notes/prototype-pollution.md",
-    "notes/WAF-bypass.md",
-    "notes/client-side-path-traversal.md",
-    "notes/command-injection.md",
-    "notes/XXE.md",
-    "attachments/SSRF/image-1.png",
-    "notes/XSS.md",
-    "notes/TLS.md",
-    "notes/JWT.md",
-    "notes/open-redirects.md",
-    "notes/broken-access-control.md",
-    "pwn-college/01-linux-luminarium/01-hello-hackers/003-command-history.md",
+    "notes/api-testing/api-testing.md",
+    "templates",
+    "notes/XXE/labs",
+    "notes/XXE",
+    "notes/XSS/labs",
+    "notes/XSS",
+    "notes/WAF-bypass/labs",
+    "notes/WAF-bypass",
+    "notes/TLS/labs",
+    "notes/TLS",
+    "notes/SSTI/labs",
+    "notes/SQLi/labs/lab3.md",
+    "notes/SQLi/labs/lab4.md",
+    "notes/SQLi/labs/lab5.md",
+    "notes/SQLi/SQLi.md",
+    "notes/command-injection/command-injection.md",
+    "notes/CORS/CORS.md",
+    "notes/CSRF/CSRF.md",
+    "notes/file-inclusion/file-inclusion.md",
+    "notes/SQLi/labs/lab2.md",
+    "notes/SQLi/labs/lab1.md",
+    "notes/JWT/JWT.md",
+    "notes/NoSQLi/NoSQLi.md",
+    "notes/open-redirects/open-redirects.md",
+    "notes/postmessage/postMessage.md",
+    "notes/prototype-pollution/prototype-pollution.md",
+    "notes/XXE/XXE.md",
+    "notes/XSS/XSS.md",
+    "notes/WAF-bypass/WAF-bypass.md",
+    "notes/TLS/TLS.md",
+    "notes/SSTI/SSTI.md",
+    "notes/SSRF/SSRF.md",
+    "notes/recon/recon.md",
+    "notes/broken-access-control/broken-access-control.md",
+    "attachments/SSRF/file-20260126070944562.png",
     "notes/pwn-college/01-linux-luminarium/04-digesting-documentation/attachments/Pasted image 20250916162842.png",
     "notes/pwn-college/01-linux-luminarium/02-pondering-paths/attachments/Pasted image 20250916042223.png",
-    "notes/pwn-college/02-computing-101/05-assembly-crash-course/012-memory-read.md",
-    "notes/pwn-college/02-computing-101/05-assembly-crash-course/011-check-even.md",
-    "notes/pwn-college/02-computing-101/05-assembly-crash-course/010-bitwise-and.md",
-    "notes/pwn-college/01-linux-luminarium/04-digesting-documentation/attachments",
-    "notes/pwn-college/01-linux-luminarium/02-pondering-paths/attachments",
-    "notes/pwn-college/02-computing-101/05-assembly-crash-course",
-    "notes/pwn-college/02-computing-101/04-hello-hackers",
-    "notes/pwn-college/02-computing-101/03-computer-memory",
-    "notes/pwn-college/02-computing-101/02-software-introspection",
-    "notes/pwn-college/02-computing-101/01-your-first-program",
-    "notes/pwn-college/01-linux-luminarium/16-daring-destruction",
-    "notes/pwn-college/01-linux-luminarium/15-silly-shenanigans",
-    "notes/pwn-college/01-linux-luminarium/14-pondering-path",
     "pwn-college/01-linux-luminarium/04-digesting-documentation/attachments/Pasted image 20250916162842.png",
     "pwn-college/01-linux-luminarium/02-pondering-paths/attachments/Pasted image 20250916042223.png",
-    "attachments/prototype-pollution/image-6.png",
-    "attachments/prototype-pollution/image-5.png",
-    "attachments/prototype-pollution/image-4.png",
-    "attachments/prototype-pollution/image-3.png",
-    "attachments/prototype-pollution/image-2.png"
+    "attachments/prototype-pollution/file-20260126070856983.png",
+    "attachments/prototype-pollution/file-20260126070856986.png",
+    "attachments/prototype-pollution/file-20260126070856985.png",
+    "attachments/prototype-pollution/file-20260126070856984 1.png",
+    "attachments/prototype-pollution/file-20260126070856986 1.png"
   ]
 }
