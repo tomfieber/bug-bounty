@@ -1,4 +1,7 @@
-# Login page
+# General Checks
+
+This is just a list of general checks around common application functionality.
+## Login page
 
 - [ ] Does the app allow self-registration
 	- [ ] Two accounts with the same name
@@ -7,8 +10,8 @@
 - [ ] Check for default credentials
 - [ ] Check for rate limiting
 - [ ] Check for account lockout
-- [ ] Test for [SQLi](notes/SQLi/SQLi.md)
-- [ ] Test for [NoSQLi](notes/NoSQLi/NoSQLi.md)
+- [ ] Test for [SQL injection](notes/sql-injection/sql-injection.md)
+- [ ] Test for [NoSQL injection](notes/nosqli-injection/nosql-injection.md)
 - [ ] Check for username enumeration
 	- [ ] Error messages
 	- [ ] Timing disparity
@@ -28,9 +31,9 @@
 - [ ] Is it using SAML/OAUTH?
 - [ ] Check for issues in client-side JS
 - [ ] Can we bypass auth with IP spoofing?
-- [ ] Check for [open redirects](notes/Open-Redirect/open-redirects.md)
+- [ ] Check for [open redirects](notes/open-redirects/open-redirects.md)
 
-# Registration
+## Registration
 
 - [ ] Can anyone register? 
 - [ ] What is required for registration?
@@ -40,35 +43,35 @@
 - [ ] Check for unicode normalization issues
 - [ ] Registration via API endpoints
 
-# User input
+## User input
 
 - [ ] Is the input reflected anywhere on the page?
 	- [ ] What is the context?
-- [ ] Check for [XSS](notes/XSS/XSS.md)
-- [ ] Check for [SQLi](notes/SQLi/SQLi.md)
-- [ ] Check for [SSTI](notes/SSTI/SSTI.md)
+- [ ] Check for [XSS](notes/xss/xss.md)
+- [ ] Check for [SQL injection](notes/sql-injection/sql-injection.md)
+- [ ] Check for [SSTI](notes/ssti/ssti.md)
 - [ ] What is the content-type of the request?
-	- [ ] Check for [XXE](notes/XXE/XXE.md)
+	- [ ] Check for [XXE](notes/xxe/xxe.md)
 	- [ ] Try converting JSON to XML
 
-# State-Changing Actions
+## State-Changing Actions
 
-- [ ] Check for [CSRF](notes/CSRF/CSRF.md)
-- [ ] Check for [BAC](broken-access-control.md)
+- [ ] Check for [CSRF](notes/csrf/csrf.md)
+- [ ] Check for [broken access control](notes/broken-access-control/broken-access-control.md)
 
-# Sensitive data returned
+## Sensitive data returned
 
-- [ ] Check [CORS](notes/CORS/CORS.md)
+- [ ] Check [CORS](notes/cors/cors.md)
 - [ ] Try to send a `POST` or `PUT` request with the data in the body to see if it's possible to update
 
-# Query strings
+## Query strings
 
-- [ ] Check for [file inclusion](notes/File-Inclusion/file-inclusion.md)
+- [ ] Check for [file inclusion](notes/file-inclusion/file-inclusion.md)
 - [ ] Check for SQLi
 - [ ] Check the network tab to see if the application is sending a secondary request to an internal API: `?user=123` --> `/api/user/123`
-	- [ ] Check for [client side path traversal](notes/Client-Side-Path-Traversal/client-side-path-traversal.md)
+	- [ ] Check for [client-side path traversal](notes/client-side-path-traversal/client-side-path-traversal.md)
 
-# File Upload
+## File Upload
 
 - [ ] What technologies are in use?
     - Important to note to understand what type of web shell might work.
@@ -98,6 +101,6 @@
     - If we can upload js and use that to bypass CSP with XSS in another part of the app
     - Is there another functionality that uses XML files from uploads? SVGs?
 
-# Invite Functionality
+## Invite Functionality
 
 - [ ] Can we control what org we join? 
