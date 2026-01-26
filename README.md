@@ -28,7 +28,7 @@
 - [ ] Is it using SAML/OAUTH?
 - [ ] Check for issues in client-side JS
 - [ ] Can we bypass auth with IP spoofing?
-- [ ] Check for [open redirects](notes/open-redirects/open-redirects.md)
+- [ ] Check for [open redirects](notes/Open-Redirect/open-redirects.md)
 
 # Registration
 
@@ -54,7 +54,7 @@
 # State-Changing Actions
 
 - [ ] Check for [CSRF](notes/CSRF/CSRF.md)
-- [ ] Check for [BAC](notes/broken-access-control/broken-access-control.md)
+- [ ] Check for [BAC](broken-access-control.md)
 
 # Sensitive data returned
 
@@ -63,10 +63,10 @@
 
 # Query strings
 
-- [ ] Check for [file inclusion](notes/file-inclusion/file-inclusion.md)
+- [ ] Check for [file inclusion](notes/File-Inclusion/file-inclusion.md)
 - [ ] Check for SQLi
 - [ ] Check the network tab to see if the application is sending a secondary request to an internal API: `?user=123` --> `/api/user/123`
-	- [ ] Check for [client side path traversal](notes/client-side-path-traversal/client-side-path-traversal.md)
+	- [ ] Check for [client side path traversal](notes/Client-Side-Path-Traversal/client-side-path-traversal.md)
 
 # File Upload
 

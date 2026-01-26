@@ -90,7 +90,7 @@ Test message<script src=https://z2c8lw3i.eu4.ctfio.com/csp-upload/uploads/ac2712
 
 ## PostMessage
 
-[postMessage](../postmessage/postMessage.md)
+[postMessage](../Postmessage/postMessage.md)
 
 A way for different browser windows to be able to talk to each other.
 - [ ] Check that postmessage orgin is validated
