@@ -10,8 +10,8 @@ This is just a list of general checks around common application functionality.
 - [ ] Check for default credentials
 - [ ] Check for rate limiting
 - [ ] Check for account lockout
-- [ ] Test for [SQL injection](notes/sql-injection/sql-injection.md)
-- [ ] Test for [NoSQL injection](notes/nosqli-injection/nosql-injection.md)
+- [ ] Test for [SQL injection](notes/sql-injection.md)
+- [ ] Test for [NoSQL injection](notes/nosql-injection.md)
 - [ ] Check for username enumeration
 	- [ ] Error messages
 	- [ ] Timing disparity
@@ -28,10 +28,10 @@ This is just a list of general checks around common application functionality.
 	- [ ] How is it handled?
 	- [ ] Current password required?
 	- [ ] Can we change where email goes?
-- [ ] Is it using SAML/OAUTH?
+- [ ] Is it using SAML/[OAuth](notes/oauth.md)?
 - [ ] Check for issues in client-side JS
 - [ ] Can we bypass auth with IP spoofing?
-- [ ] Check for [open redirects](notes/open-redirects/open-redirects.md)
+- [ ] Check for [open redirects](notes/open-redirects.md)
 
 ## Registration
 
@@ -47,29 +47,29 @@ This is just a list of general checks around common application functionality.
 
 - [ ] Is the input reflected anywhere on the page?
 	- [ ] What is the context?
-- [ ] Check for [XSS](notes/xss/xss.md)
-- [ ] Check for [SQL injection](notes/sql-injection/sql-injection.md)
-- [ ] Check for [SSTI](notes/ssti/ssti.md)
+- [ ] Check for [XSS](notes/xss.md)
+- [ ] Check for [SQL injection](notes/sql-injection.md)
+- [ ] Check for [SSTI](notes/ssti.md)
 - [ ] What is the content-type of the request?
-	- [ ] Check for [XXE](notes/xxe/xxe.md)
+	- [ ] Check for [XXE](notes/xxe.md)
 	- [ ] Try converting JSON to XML
 
 ## State-Changing Actions
 
-- [ ] Check for [CSRF](notes/csrf/csrf.md)
-- [ ] Check for [broken access control](notes/broken-access-control/broken-access-control.md)
+- [ ] Check for [CSRF](notes/csrf.md)
+- [ ] Check for [broken access control](notes/broken-access-control.md)
 
 ## Sensitive data returned
 
-- [ ] Check [CORS](notes/cors/cors.md)
+- [ ] Check [CORS](notes/cors.md)
 - [ ] Try to send a `POST` or `PUT` request with the data in the body to see if it's possible to update
 
 ## Query strings
 
-- [ ] Check for [file inclusion](notes/file-inclusion/file-inclusion.md)
+- [ ] Check for [file inclusion](notes/file-inclusion.md)
 - [ ] Check for SQLi
 - [ ] Check the network tab to see if the application is sending a secondary request to an internal API: `?user=123` --> `/api/user/123`
-	- [ ] Check for [client-side path traversal](notes/client-side-path-traversal/client-side-path-traversal.md)
+	- [ ] Check for [client-side path traversal](notes/client-side-path-traversal.md)
 
 ## File Upload
 
@@ -107,5 +107,5 @@ This is just a list of general checks around common application functionality.
 
 ## JWT
 
-- [ ] Check [JWT](notes/jwt/jwt.md) cheatsheet
+- [ ] Check [JWT](notes/jwt.md) cheatsheet
 - [ ] Can we re-use JWTs between systems (e.g., dev --> prod)? 
