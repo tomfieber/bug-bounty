@@ -2,11 +2,11 @@
 
 1. Note that a normal request includes "Welcome back!" in the response
 
-![[attachments/sqli-lab-11/file-20260204113218141.png]]
+![[attachments/sqli-lab-11/file-20260206135416418.png]]
 
 2. Note that the original query returns one column
 
-![[attachments/sqli-lab-11/file-20260204113424472.png]]
+![[attachments/sqli-lab-11/file-20260206135416420.png]]
 
 3. Send the following request to find the first letter of the admin password
 
@@ -32,7 +32,7 @@ Te: trailers
 
 4. Set placeholders in the substring and in the value in intruder and run the attack
 
-![[attachments/sqli-lab-11/file-20260204115432046.png]]
+![[attachments/sqli-lab-11/file-20260206135416422.png]]
 
 5. Find the following the password
 

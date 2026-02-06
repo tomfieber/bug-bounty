@@ -116,7 +116,7 @@ Note the mistake in the regex. The `.` character matches any character except fo
 
 [regex101](https://regex101.com/)
 
-![](attachments/xss/file-20260204091829221.png)
+![](attachments/xss/file-20260206135416524.png)
 
 
 Additionally, there's nothing to indicate that the `ctfio.com` is the end of the string, so something like `test.ctfio.com.hacker.com` would also work.

