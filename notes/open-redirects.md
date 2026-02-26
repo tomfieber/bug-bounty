@@ -16,7 +16,7 @@ If there is an open redirect somewhere on the site, we might be able to abuse th
 Example:
 
 ```
-<https://auth.barite.ctfio.com/auth?client_id=1&redirect_url=https://barite.ctfio.com/redirect?url=https://tomfieber.github.io&response_type=token>
+https://auth.barite.ctfio.com/auth?client_id=1&redirect_url=https://barite.ctfio.com/redirect?url=https://tomfieber.github.io&response_type=token
 ```
 
 Note that the open redirect occurs within one functionality on the site:

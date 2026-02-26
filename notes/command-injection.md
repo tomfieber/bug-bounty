@@ -1,5 +1,7 @@
 # Command Injection
 
+Command injection vulnerabilities allow an attacker to execute arbitrary OS commands on the server by injecting them into application inputs.
+
 ## Injection Operators
 
 | **Injection Operator** | **Injection Character** | **URL-Encoded Character** | **Executed Command**                       |
@@ -9,15 +11,15 @@
 | Background             | `&`                     | `%26`                     | Both (second output generally shown first) |
 | Pipe                   | `\|`                    | `%7c`                     | Both (only second output is shown)         |
 | AND                    | `&&`                    | `%26%26`                  | Both (only if first succeeds)              |
-| OR                     | `\|`                    | `%7c%7c`                  | Second (only if first fails)               |
+| OR                     | `\|\|`                  | `%7c%7c`                  | Second (only if first fails)               |
 | Sub-Shell              | ` `` `                  | `%60%60`                  | Both (Linux-only)                          |
 | Sub-Shell              | `$()`                   | `%24%28%29`               | Both (Linux-only)                          |
 
 ---
 
-# Linux
+## Linux
 
-## Filtered Character Bypass
+### Filtered Character Bypass
 
 | Description                                                                        | Code                    |
 | ---------------------------------------------------------------------------------- | ----------------------- |
@@ -33,7 +35,7 @@
 
 ---
 
-## Blacklisted Command Bypass
+### Blacklisted Command Bypass
 
 | Description                         | Code                                                         |
 | ----------------------------------- | ------------------------------------------------------------ |
@@ -52,9 +54,9 @@
 
 ---
 
-# Windows
+## Windows
 
-## Filtered Character Bypass
+### Filtered Character Bypass
 
 | Description                                                  | Code                    |
 | ------------------------------------------------------------ | ----------------------- |
@@ -69,7 +71,7 @@
 
 ---
 
-## Blacklisted Command Bypass
+#### Blacklisted Command Bypass
 
 | Code                                                                                                         | Description                              |
 | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------- |
@@ -84,3 +86,10 @@
 | **Encoded Commands**                                                                                         |                                          |
 | `[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes('whoami'))`                              | Encode a string with base64              |
 | `iex "$([System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String('dwBoAG8AYQBtAGkA')))"` | Execute b64 encoded string               |
+
+---
+
+## References
+
+- [PayloadsAllTheThings - Command Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Command%20Injection)
+- [HackTricks - Command Injection](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html)

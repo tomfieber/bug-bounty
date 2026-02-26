@@ -563,7 +563,7 @@ Each type has its own unique characteristics, advantages, and use cases.
 |`Advantages`|Simplicity, flexibility, scalability.|
 |`Disadvantages`|Can lead to over-fetching or under-fetching data.|
 
-`REST Fuzzing Tips:`
+#### REST Fuzzing Tips:
 
 |`Tip`|`Explanation`|
 |---|---|
@@ -591,7 +591,7 @@ Each type has its own unique characteristics, advantages, and use cases.
 |`Advantages`|Strong security, reliability, and extensibility.|
 |`Disadvantages`|More complex and less flexible compared to REST.|
 
-`SOAP Fuzzing Tips:`
+#### SOAP Fuzzing Tips:
 
 |`Tip`|`Explanation`|
 |---|---|
@@ -618,7 +618,7 @@ Each type has its own unique characteristics, advantages, and use cases.
 |`Advantages`|Efficiency, flexibility, and powerful developer tooling.|
 |`Disadvantages`|Potential for complex queries leading to performance issues if not properly managed.|
 
-`GraphQL Fuzzing Tips:`
+#### GraphQL Fuzzing Tips:
 
 | `Tip`                                 | `Explanation`                                                                                        |
 | ------------------------------------- | ---------------------------------------------------------------------------------------------------- |

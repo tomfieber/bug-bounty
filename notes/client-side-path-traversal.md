@@ -1,6 +1,6 @@
 # Client-Side Path Traversal (CSPT)
 
-# CSPT Checks
+## Checks
 
 - [ ] Check the network tab for requests to API endpoints
 - [ ] Carefully review the client-side code and AJAX requests to identify other endpoints that may be useful

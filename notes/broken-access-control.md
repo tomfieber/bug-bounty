@@ -1,25 +1,29 @@
-# Broken Access Control/IDOR
+# Broken Access Control / IDOR
+
+Broken access control allows users to act outside of their intended permissions. IDOR (Insecure Direct Object Reference) occurs when an application uses user-supplied input to access objects directly without proper authorization checks.
+
+## Checks
 
 - [ ] Understand the context of the app
 - [ ] Read all client-side JS; check for:
-	- [ ] Passwords, credentials, secrets
-	- [ ] API keys
-	- [ ] Paths, URIs, API structure
-	- [ ] Object identifiers
+  - [ ] Passwords, credentials, secrets
+  - [ ] API keys
+  - [ ] Paths, URIs, API structure
+  - [ ] Object identifiers
 - [ ] Find the JSON/API endpoints (not the rendered HTML)
 - [ ] Create a list of interesting object IDs
-	- [ ] Request params
-	- [ ] Response params
-	- [ ] URI path params
-	- [ ] Headers
+  - [ ] Request params
+  - [ ] Response params
+  - [ ] URI path params
+  - [ ] Headers
 - [ ] Test for type confusion -- int --> str, str --> int, etc.
 - [ ] Try quiet tweaks first: trailing slash, double slash, subpaths, query params.
 - [ ] Test version downgrades - old APIs are gold.
 - [ ] Try type/format tricks: strings, leading zeros, hex.
 - [ ] Try encoding tricks: `%00`, `%20`, control chars.
 - [ ] Combine tricks when single tests fail.
-	- [ ] Downgrade + encoded char + path tweak
-	- [ ] Try something like `/api/v2/users/5%20/`
+  - [ ] Downgrade + encoded char + path tweak
+  - [ ] Try something like `/api/v2/users/5%20/`
 - [ ] Log request + response (status + body snippet) - that becomes your PoC.
 - [ ] If UUIDs are used, check if they're leaked in other parts of the app or online (e.g., GitHub, etc.)
 
@@ -92,14 +96,21 @@ Check to see if control characters can bypass checks
 
 ```
 GET /api/v3/users/5
-Host: target 
+Host: target
 X-Original-URL: /api/v3/users/4
 ```
 
-## Unicode  / encoded space
+## Unicode / encoded space
 
 ```
 /api/v3/users/5
 /api/v3/users/5%20
 ```
 
+---
+
+## References
+
+- [OWASP - Broken Access Control](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
+- [PortSwigger - Access Control](https://portswigger.net/web-security/access-control)
+- [HackTricks - IDOR](https://book.hacktricks.wiki/en/pentesting-web/idor.html)

