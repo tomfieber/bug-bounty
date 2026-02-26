@@ -5,8 +5,8 @@ This is just a list of general checks around common application functionality.
 ## Login page
 
 - [ ] Does the app allow self-registration
-  - [ ] Two accounts with the same name
-  - [ ] Unicode normalization issues?
+  - Two accounts with the same name
+  - Unicode normalization issues?
 - [ ] Check for weak credentials
 - [ ] Check for default credentials
 - [ ] Check for rate limiting
@@ -14,21 +14,21 @@ This is just a list of general checks around common application functionality.
 - [ ] Test for [SQL](notes/sql-injection.md)
 - [ ] Test for [NoSQL Injection](notes/nosql-injection.md)
 - [ ] Check for username enumeration
-  - [ ] Error messages
-  - [ ] Timing disparity
-  - [ ] Content-length
-  - [ ] Try with a very long password
+  - Error messages
+  - Timing disparity
+  - Content-length
+  - Try with a very long password
 - [ ] Is there MFA
-  - [ ] Can it be bypassed?
-  - [ ] Brute forced if no rate limiting?
-  - [ ] How are MFA tokens handled?
-    - [ ] Do they expire?
-    - [ ] Can they be used more than once?
+  - Can it be bypassed?
+  - Brute forced if no rate limiting?
+  - How are MFA tokens handled?
+    - Do they expire?
+    - Can they be used more than once?
   - [ ] Navigate directly to authenticated functionality
 - [ ] Forgot password functionality?
-  - [ ] How is it handled?
-  - [ ] Current password required?
-  - [ ] Can we change where email goes?
+  - How is it handled?
+  - Current password required?
+  - Can we change where email goes?
 - [ ] Is it using SAML/[OAuth](notes/oauth.md)?
 - [ ] Check for issues in client-side JS
 - [ ] Can we bypass auth with IP spoofing?
@@ -40,8 +40,8 @@ This is just a list of general checks around common application functionality.
 
 - [ ] Can anyone register?
 - [ ] What is required for registration?
-  - [ ] email, phone number, etc.
-  - [ ] Is it strictly enforced?
+  - email, phone number, etc.
+  - Is it strictly enforced?
 - [ ] Check for mass assignment
 - [ ] Check for unicode normalization issues
 - [ ] Registration via API endpoints
@@ -52,14 +52,14 @@ This is just a list of general checks around common application functionality.
 ## User input
 
 - [ ] Is the input reflected anywhere on the page?
-  - [ ] What is the context?
+  - What is the context?
 - [ ] Check for [XSS](notes/xss.md)
 - [ ] Check for [SQL Injection](notes/sql-injection.md)
 - [ ] Check for [SSTI](notes/ssti.md)
 - [ ] Check for [Command Injection](notes/command-injection.md) (especially in fields that interact with the OS: filenames, hostnames, ping/traceroute tools, PDF generators)
 - [ ] What is the content-type of the request?
-  - [ ] Check for [XXE](notes/xxe.md)
-  - [ ] Try converting JSON to XML
+  - Check for [XXE](notes/xxe.md)
+  - Try converting JSON to XML
 - [ ] Check for [Prototype Pollution](notes/prototype-pollution.md) in JSON inputs
 
 ## State-Changing Actions
@@ -81,7 +81,7 @@ This is just a list of general checks around common application functionality.
 - [ ] Check for [file inclusion](notes/file-inclusion.md)
 - [ ] Check for SQLi
 - [ ] Check the network tab to see if the application is sending a secondary request to an internal API: `?user=123` --> `/api/user/123`
-  - [ ] Check for [client side path traversal](notes/client-side-path-traversal.md)
+  - Check for [client side path traversal](notes/client-side-path-traversal.md)
 - [ ] Check for [SSRF](notes/ssrf.md) in any URL/redirect parameters
 - [ ] Check for HTTP parameter pollution (duplicate params: `?id=1&id=2`)
 
@@ -152,12 +152,12 @@ This is just a list of general checks around common application functionality.
 ## Security Headers & Configuration
 
 - [ ] Check for missing or misconfigured security headers:
-  - [ ] `Content-Security-Policy`
-  - [ ] `X-Content-Type-Options: nosniff`
-  - [ ] `X-Frame-Options` (clickjacking)
-  - [ ] `Strict-Transport-Security` (HSTS)
-  - [ ] `Referrer-Policy`
-  - [ ] `Permissions-Policy`
+  - `Content-Security-Policy`
+  - `X-Content-Type-Options: nosniff`
+  - `X-Frame-Options` (clickjacking)
+  - `Strict-Transport-Security` (HSTS)
+  - `Referrer-Policy`
+  - `Permissions-Policy`
 - [ ] Check for information disclosure in response headers (`Server`, `X-Powered-By`, `X-AspNet-Version`)
 - [ ] Check for `.git`, `.svn`, `.env`, `.DS_Store`, `backup.zip`, etc. exposed on the web root
 - [ ] Check `robots.txt` and `sitemap.xml` for interesting paths

