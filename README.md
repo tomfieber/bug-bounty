@@ -9,8 +9,9 @@ This is just a list of general checks around common application functionality.
   - Unicode normalization issues?
 - [ ] Check for weak credentials
 - [ ] Check for default credentials
-- [ ] Check for rate limiting
-- [ ] Check for account lockout
+- [ ] Test [Brute Forcing](notes/brute-forcing.md)
+	- [ ] Check for rate limiting
+	- [ ] Check for account lockout
 - [ ] Test for [SQL](notes/sql-injection.md)
 - [ ] Test for [NoSQL Injection](notes/nosql-injection.md)
 - [ ] Check for username enumeration
