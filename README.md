@@ -9,11 +9,11 @@ This is just a list of general checks around common application functionality.
   - Unicode normalization issues?
 - [ ] Check for weak credentials
 - [ ] Check for default credentials
-- [ ] Test [Brute Forcing](notes/brute-forcing.md)
+- [ ] Test [[notes/brute-forcing|Brute force]]
 	- [ ] Check for rate limiting
 	- [ ] Check for account lockout
-- [ ] Test for [SQL](notes/sql-injection.md)
-- [ ] Test for [NoSQL Injection](notes/nosql-injection.md)
+- [ ] Test for [[notes/sql-injection|SQL Injection]]
+- [ ] Test for [[notes/nosql-injection|NoSQL Injection]]
 - [ ] Check for username enumeration
   - Error messages
   - Timing disparity
@@ -30,10 +30,10 @@ This is just a list of general checks around common application functionality.
   - How is it handled?
   - Current password required?
   - Can we change where email goes?
-- [ ] Is it using SAML/[OAuth](notes/oauth.md)?
+- [ ] Is it using SAML/[[notes/oauth|OAuth]]?
 - [ ] Check for issues in client-side JS
 - [ ] Can we bypass auth with IP spoofing?
-- [ ] Check for [open redirects](notes/open-redirects.md)
+- [ ] Check for [[notes/open-redirects|open redirects]]
 - [ ] Password reset poisoning (Host header injection to redirect reset link to attacker domain)
 - [ ] Check if login works over HTTP (credentials sent in cleartext)
 
@@ -54,36 +54,36 @@ This is just a list of general checks around common application functionality.
 
 - [ ] Is the input reflected anywhere on the page?
   - What is the context?
-- [ ] Check for [XSS](notes/xss.md)
-- [ ] Check for [SQL Injection](notes/sql-injection.md)
-- [ ] Check for [SSTI](notes/ssti.md)
-- [ ] Check for [Command Injection](notes/command-injection.md) (especially in fields that interact with the OS: filenames, hostnames, ping/traceroute tools, PDF generators)
+- [ ] Check for [[notes/xss|XSS]]
+- [ ] Check for [[notes/sql-injection|SQL injection]]
+- [ ] Check for [[notes/ssti|SSTI]]
+- [ ] Check for [[notes/command-injection|command injection]] (especially in fields that interact with the OS: filenames, hostnames, ping/traceroute tools, PDF generators)
 - [ ] What is the content-type of the request?
-  - Check for [XXE](notes/xxe.md)
+  - Check for [[notes/xxe|XXE]]
   - Try converting JSON to XML
-- [ ] Check for [Prototype Pollution](notes/prototype-pollution.md) in JSON inputs
+- [ ] Check for [[notes/prototype-pollution|prototype pollution]] in JSON inputs
 
 ## State-Changing Actions
 
-- [ ] Check for [CSRF](notes/csrf.md)
-- [ ] Check for [Broken Access Control](notes/broken-access-control.md)
+- [ ] Check for [[notes/csrf|CSRF]]
+- [ ] Check for [[notes/broken-access-control|broken access control]]
 - [ ] Check for race conditions on critical operations (balance transfers, coupon redemption, invite acceptance)
 - [ ] Check for missing confirmation steps on destructive actions (account deletion, data export)
 
 ## Sensitive data returned
 
-- [ ] Check [CORS](notes/cors.md)
+- [ ] Check [[notes/cors|CORS]]
 - [ ] Try to send a `POST` or `PUT` request with the data in the body to see if it's possible to update
 - [ ] Check if sensitive data is exposed in URL parameters (leaked via Referer header, browser history, logs)
 - [ ] Check autocomplete on sensitive fields (passwords, credit cards) — `autocomplete="off"` missing?
 
 ## Query strings
 
-- [ ] Check for [file inclusion](notes/file-inclusion.md)
+- [ ] Check for [[notes/file-inclusion|file inclusion]]
 - [ ] Check for SQLi
 - [ ] Check the network tab to see if the application is sending a secondary request to an internal API: `?user=123` --> `/api/user/123`
-  - Check for [client side path traversal](notes/client-side-path-traversal.md)
-- [ ] Check for [SSRF](notes/ssrf.md) in any URL/redirect parameters
+  - Check for [[notes/client-side-path-traversal|client-side path traversal]]
+- [ ] Check for [[notes/ssrf|SSRF]] in any URL/redirect parameters
 - [ ] Check for HTTP parameter pollution (duplicate params: `?id=1&id=2`)
 
 ## File Upload
@@ -126,7 +126,7 @@ This is just a list of general checks around common application functionality.
 
 ## JWT
 
-- [ ] Check [JWT](notes/jwt.md) cheatsheet
+- [ ] Check [[notes/jwt|JWT]] cheatsheet
 - [ ] Can we re-use JWTs between systems (e.g., dev --> prod)?
 
 ## Session Management
@@ -141,7 +141,7 @@ This is just a list of general checks around common application functionality.
 
 ## API Endpoints
 
-- [ ] Check [API Testing](notes/api-testing.md) cheatsheet
+- [ ] Check [[notes/api-testing|API testing]] cheatsheet
 - [ ] Check for unauthenticated access to API endpoints
 - [ ] Test all HTTP methods (GET, POST, PUT, DELETE, PATCH, OPTIONS)
 - [ ] Check for mass assignment in POST/PUT requests

