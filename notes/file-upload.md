@@ -7,24 +7,26 @@ File upload vulnerabilities occur when a web application allows users to upload 
 - [ ] What is the server running? PHP, .NET, etc.?
 - [ ] Check unrestricted file upload
 - [ ] Are file restrictions enforced on the server or only on the client-side?
-  - [ ] Check for client-side bypass
-  - [ ] Check for black/whitelist filters
-  - [ ] Check for type-filter bypass
-  - [ ] Check for content-type bypass
-  - [ ] Try magic bytes/file signature bypass
-    - [ ] Allowed MIME type with disallowed content-type
-    - [ ] Allowed MIME/content-type with disallowed extension
-    - [ ] Disallowed MIME/content-type with allowed extension
-- [ ] Check partial uploads - XSS, XXE
-  - [ ] Can we change content type to text/html
-  - [ ] Check for docx uploads
-  - [ ] Check SVG uploads
+  - Check for client-side bypass
+  - Check for black/whitelist filters
+  - Check for type-filter bypass
+  - Check for content-type bypass
+  - Try magic bytes/file signature bypass
+    - Allowed MIME type with disallowed content-type
+    - Allowed MIME/content-type with disallowed extension
+    - Disallowed MIME/content-type with allowed extension
+- [ ] Check partial uploads -[ XSS](notes/xss.md), [XXE](xxe.md)
+  - Can we change content type to text/html
+  - Check for docx uploads
+  - Check SVG uploads
 - [ ] Check for path traversal in the filename
 - [ ] Check for injections in filename
-  - [ ] Command injections
-  - [ ] XSS
-  - [ ] SQLi
+  - [command injection](command-injection.md)
+  - [xss](xss.md)
+  - [sql-injection](sql-injection.md)
 - [ ] Check if the upload directory is disclosed
+- [ ] Try character injections before and after extension
+- [ ] 
 
 ## Web Shells
 

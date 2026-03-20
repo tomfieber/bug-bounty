@@ -68,7 +68,7 @@ From Tanuki (XInclude) on Bugforge
 - [ ] Try to access sensitive local files (/etc/shadow, web.config, application.properties, etc.)
 - [ ] Attempt to read source code files
 - [ ] Test for directory traversal combined with XXE
-- [[e.g., [http://169.254.169.254/latest/meta-data/](http://169.254.169.254/latest/meta-data/| ]])
+- [ ](e.g.,%20[http://169.254.169.254/latest/meta-data/))
 - [ ] Attempt to retrieve Windows credential files (SAM, SYSTEM hives)
 
 ### SSRF via XXE

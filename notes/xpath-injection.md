@@ -1,6 +1,6 @@
 # XPath Injection
 
-[[XPath)](https://www.w3.org/TR/xpath-3/|XML Path Language (XPath)]] is a query language for [[XML)](https://datatracker.ietf.org/doc/html/rfc5364|Extensible Markup Language (XML)]] data. Specifically, we can use XPath to construct XPath queries for data stored in the XML format. If user input is inserted into XPath queries without proper sanitization, [XPath Injection](https://owasp.org/www-community/attacks/XPATH_Injection) vulnerabilities arise, similar to SQL Injection vulnerabilities.
+[XML Path Language (XPath)](XPath)) is a query language for [Extensible Markup Language (XML)](XML)) data. Specifically, we can use XPath to construct XPath queries for data stored in the XML format. If user input is inserted into XPath queries without proper sanitization, [XPath Injection](https://owasp.org/www-community/attacks/XPATH_Injection) vulnerabilities arise, similar to SQL Injection vulnerabilities.
 
 ## XPath Injection
 
