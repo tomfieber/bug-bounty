@@ -131,6 +131,41 @@ katana -l live-websites -silent -jc -jsl -o katana_results.txt
 xnLinkFinder -i ~/.config/waymore/results/$domain -sp https://$domain -sf $domain -o js_files.txt
 ```
 
+**Recursive Fuzzing**
+
+```bash
+ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -ic -v -u http://IP:PORT/FUZZ -e .html -recursion
+```
+
+```bash
+ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -ic -u http://IP:PORT/FUZZ -e .html -recursion -recursion-depth 2 -rate 500
+```
+
+**Fuzzing Parameters**
+
+```bash
+ffuf -u http://IP:PORT/post.php -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "y=FUZZ" -w /usr/share/seclists/Discovery/Web-Content/common.txt -mc 200 -v
+```
+
+**Vhost Fuzzing**
+
+```bash
+gobuster vhost -u http://inlanefreight.htb:81 -w /usr/share/seclists/Discovery/Web-Content/common.txt --append-domain
+```
+
+**Subdomain Fuzzing**
+
+```bash
+gobuster dns -d inlanefreight.com -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
+```
+
+**API Fuzzing**
+
+```bash
+python3 api_fuzzer.py http://IP:PORT
+```
+
+
 ## JS Analysis
 
 ```bash
@@ -214,6 +249,7 @@ trufflehog github --org=target --only-verified
 - [ ] Check for leaked API keys, credentials, internal URLs
 - [ ] Search for `.env` files, config files, internal documentation
 - [ ] Check employee personal repos for target-related code
+
 
 # Web Recon
 
