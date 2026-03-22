@@ -22,7 +22,8 @@ test@test.com' and 1=sleep(3);-- -
 
 - [ ] Look for any input fields that may be inserting rows into the database and check those for injection as well.
 
-> [!warning] Be careful with testing this. Inserting rows into the db without consideration has the potential to break something in the application.
+> [!warning] 
+> Be careful with testing this. Inserting rows into the db without consideration has the potential to break something in the application.
 
 - Examples
 
@@ -58,7 +59,8 @@ test',sleep(5),'');-- -
 - [ ] ghauri
       [GitHub - r0oth3x49/ghauri: An advanced cross-platform tool that automates the process of detecting and exploiting SQL injection security flaws](https://github.com/r0oth3x49/ghauri)
 
-> [!tip] Custom headers are still by far the most common place to still find SQLi
+> [!tip] 
+> Custom headers are still by far the most common place to still find SQLi
 
 ## UNION-Based Injection
 
