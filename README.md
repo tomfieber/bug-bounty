@@ -1,7 +1,5 @@
 # Web Application Security Testing Checklist
 
-> Structured checklist for web application security assessments. Each section links to detailed technique cheatsheets in the `notes/` directory.
-
 ## Contents
 
 - [Reconnaissance](#reconnaissance)

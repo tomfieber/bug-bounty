@@ -6,7 +6,9 @@ JWTs are used for authentication and session management. Vulnerabilities arise f
 
 [Attack Methodology](https://github.com/ticarpi/jwt_tool/wiki/Attack-Methodology)
 
-> [!example]- JWT Tool Menu
+> [!example] 
+> 
+> JWT Tool Menu
 >
 > ```
 > ➜ jwt_tool --help
