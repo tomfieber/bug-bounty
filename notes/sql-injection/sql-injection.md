@@ -62,6 +62,7 @@ Data types in MySQL - [link](https://dev.mysql.com/doc/refman/8.0/en/data-types.
 | `SELECT * FROM logins LIMIT 1, 2`                                                                                                                        | Only show first two results starting from index 2        |
 | `SELECT * FROM table_name WHERE <condition>`                                                                                                             | List results that meet a condition                       |
 | `SELECT * FROM logins WHERE username LIKE 'admin%'`                                                                                                      | List results where the name is similar to a given string |
+
 The following queries and their output will tell us that we are dealing with `MySQL`:
 
 | Payload            | When to Use                      | Expected Output                                     | Wrong Output                                              |
