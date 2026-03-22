@@ -51,8 +51,8 @@ CSP is a secondary protection mechanism that helps protect against XSS, Clickjac
 
 ### CSP Bypasses
 
-[CSP Bypass Search](https://cspbypass.com/)
-[CSP Evaluator](https://csp-evaluator.withgoogle.com/)
+- [CSP Bypass Search](https://cspbypass.com/)
+- [CSP Evaluator](https://csp-evaluator.withgoogle.com/)
 
 ### CSP URI Scheme Bypass
 
