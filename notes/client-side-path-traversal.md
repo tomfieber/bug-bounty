@@ -6,9 +6,9 @@
 - [ ] Carefully review the client-side code and AJAX requests to identify other endpoints that may be useful
 - [ ] Check to see what other methods are being used with endpoints
 - [ ] Check for chains with other vulns --
-  - [ XSS](xss.md.md)
-  - [ ] Combine with CSRF — if a path-traversed request performs a state change
-  - [ ] Combine with SSRF — if the client sends the traversed path to the server
+  - [ ] [XSS](xss.md)
+  - [ ] Combine with [CSRF](csrf.md) — if a path-traversed request performs a state change
+  - [ ] Combine with [SSRF](ssrf.md) — if the client sends the traversed path to the server
 - [ ] Try dot-dot-slash (`../`) in path segments of AJAX/fetch URLs
 - [ ] Check if client-side routing uses URL path segments directly in API calls
 - [ ] Look for patterns like `fetch('/api/resource/' + userInput)` where userInput isn't sanitized

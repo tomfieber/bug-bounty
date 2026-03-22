@@ -44,7 +44,7 @@ Host: attacker.com
 
 If cached, subsequent users visiting `/login` may receive a page with resources loaded from `attacker.com`.
 
-### Routing-Based SSRF
+### Routing-Based [SSRF](ssrf.md)
 
 ```http
 GET / HTTP/1.1

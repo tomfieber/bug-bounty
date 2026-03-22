@@ -44,6 +44,8 @@ Detect:
 {{config}}
 ```
 
+![](attachments/ssti/file-20260321194820371.png)
+
 RCE:
 
 ```

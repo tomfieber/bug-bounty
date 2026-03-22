@@ -51,7 +51,7 @@ If the target sends data via `postMessage` with `targetOrigin: '*'`:
 </script>
 ```
 
-### Chaining with XSS
+### Chaining with [XSS](xss.md)
 
 If the message handler writes `event.data` into `innerHTML`:
 

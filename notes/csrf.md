@@ -48,7 +48,7 @@ Example:
 
 If you have a self XSS that would require the victim to fill out a form, it may be possible to chain the self-XSS -> CSRF to develop a working exploit that has impact.
 
-> [! tip] This is particularly relevant for POST requests that are vulnerable to XSS
+> [!tip] This is particularly relevant for POST requests that are vulnerable to XSS
 
 ## SameSite Cookie Bypasses
 

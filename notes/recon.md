@@ -1,4 +1,4 @@
-# Recon
+# Reconnaissance
 
 Check [bgp.he.net](https://bgp.he.net)
 
@@ -165,7 +165,6 @@ gobuster dns -d inlanefreight.com -w /usr/share/seclists/Discovery/DNS/subdomain
 python3 api_fuzzer.py http://IP:PORT
 ```
 
-
 ## JS Analysis
 
 ```bash
@@ -175,19 +174,19 @@ cat js_files.txt | gf urls | tee sensitive_urls.txt
 
 ## Initial Vulnerability Checks
 
-**CSRF Checks**
+**[CSRF](csrf.md) Checks**
 
 ```bash
 cat live-websites | gf csrf | tee csrf_endpoints.txt
 ```
 
-**LFI Checks**
+**[LFI](file-inclusion.md) Checks**
 
 ```bash
 cat live-websites | gf lfi | qsreplace "/etc/passwd" | xargs -I@ curl -s @ | grep "root:x:" > lfi_results.txt
 ```
 
-**SQLi Testing**
+**[SQLi](sql-injection/sql-injection.md) Testing**
 
 ```bash
 ghauri -u "https://target.com?id=1" --dbs --batch
@@ -199,7 +198,7 @@ ghauri -u "https://target.com?id=1" --dbs --batch
 cat js_files.txt | grep -Ei "key|token|auth|password" > sensitive_data.txt
 ```
 
-**Open Redirect Search**
+**[Open Redirect](open-redirects.md) Search**
 
 ```bash
 cat urls.txt | grep "=http" | qsreplace "https://evil.com" | xargs -I@ curl -I -s @ | grep "evil.com"
@@ -250,8 +249,7 @@ trufflehog github --org=target --only-verified
 - [ ] Search for `.env` files, config files, internal documentation
 - [ ] Check employee personal repos for target-related code
 
-
-# Web Recon
+# Background
 
 Web reconnaissance is the first step in any security assessment or penetration testing engagement. It's akin to a detective's initial investigation, meticulously gathering clues and evidence about a target before formulating a plan of action. In the digital realm, this translates to accumulating information about a website or web application to identify potential vulnerabilities, security misconfigurations, and valuable assets.
 
@@ -264,10 +262,10 @@ The primary goals of web reconnaissance revolve around gaining a comprehensive u
 
 Web reconnaissance can be conducted using either active or passive techniques, each with its own advantages and drawbacks:
 
-|Type|Description|Risk of Detection|Examples|
-|---|---|---|---|
-|Active Reconnaissance|Involves directly interacting with the target system, such as sending probes or requests.|Higher|Port scanning, vulnerability scanning, network mapping|
-|Passive Reconnaissance|Gathers information without directly interacting with the target, relying on publicly available data.|Lower|Search engine queries, WHOIS lookups, DNS enumeration, web archive analysis, social media|
+| Type                   | Description                                                                                           | Risk of Detection | Examples                                                                                  |
+| ---------------------- | ----------------------------------------------------------------------------------------------------- | ----------------- | ----------------------------------------------------------------------------------------- |
+| Active Reconnaissance  | Involves directly interacting with the target system, such as sending probes or requests.             | Higher            | Port scanning, vulnerability scanning, network mapping                                    |
+| Passive Reconnaissance | Gathers information without directly interacting with the target, relying on publicly available data. | Lower             | Search engine queries, WHOIS lookups, DNS enumeration, web archive analysis, social media |
 
 ## WHOIS
 
@@ -283,7 +281,6 @@ This would return a wealth of information, including the registrar, registration
 
 However, it's important to note that WHOIS data can be inaccurate or intentionally obscured, so it's always wise to verify the information from multiple sources. Privacy services can also mask the true owner of a domain, making it more difficult to obtain accurate information through WHOIS.
 
-
 ## Subdomains
 
 Subdomains are essentially extensions of a primary domain name, often used to organize different sections or services within a website. For example, a company might use `mail.example.com` for their email server or `blog.example.com` for their blog.
@@ -292,10 +289,10 @@ From a reconnaissance perspective, subdomains are incredibly valuable. They can 
 
 The process of discovering subdomains is known as subdomain enumeration. There are two main approaches to subdomain enumeration:
 
-|Approach|Description|Examples|
-|---|---|---|
-|`Active Enumeration`|Directly interacts with the target's DNS servers or utilizes tools to probe for subdomains.|Brute-forcing, DNS zone transfers|
-|`Passive Enumeration`|Collects information about subdomains without directly interacting with the target, relying on public sources.|Certificate Transparency (CT) logs, search engine queries|
+| Approach              | Description                                                                                                    | Examples                                                  |
+| --------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| `Active Enumeration`  | Directly interacts with the target's DNS servers or utilizes tools to probe for subdomains.                    | Brute-forcing, DNS zone transfers                         |
+| `Passive Enumeration` | Collects information about subdomains without directly interacting with the target, relying on public sources. | Certificate Transparency (CT) logs, search engine queries |
 
 `Active enumeration` can be more thorough but carries a higher risk of detection. Conversely, `passive enumeration` is stealthier but may not uncover all subdomains. Combining both techniques can significantly increase the likelihood of discovering a comprehensive list of subdomains associated with your target, expanding your understanding of their online presence and potential vulnerabilities.
 
@@ -394,16 +391,16 @@ Leveraging search engines for reconnaissance involves utilizing their vast index
 
 By employing advanced search operators and specialized queries known as "Google Dorks," you can pinpoint specific information buried within search results. Here's a table of some useful search operators for web reconnaissance:
 
-|Operator|Description|Example|
-|---|---|---|
-|`site:`|Restricts search results to a specific website.|`site:example.com "password reset"`|
-|`inurl:`|Searches for a specific term in the URL of a page.|`inurl:admin login`|
-|`filetype:`|Limits results to files of a specific type.|`filetype:pdf "confidential report"`|
-|`intitle:`|Searches for a term within the title of a page.|`intitle:"index of" /backup`|
-|`cache:`|Shows the cached version of a webpage.|`cache:example.com`|
-|`"search term"`|Searches for the exact phrase within quotation marks.|`"internal error" site:example.com`|
-|`OR`|Combines multiple search terms.|`inurl:admin OR inurl:login`|
-|`-`|Excludes specific terms from search results.|`inurl:admin -intext:wordpress`|
+| Operator        | Description                                           | Example                              |
+| --------------- | ----------------------------------------------------- | ------------------------------------ |
+| `site:`         | Restricts search results to a specific website.       | `site:example.com "password reset"`  |
+| `inurl:`        | Searches for a specific term in the URL of a page.    | `inurl:admin login`                  |
+| `filetype:`     | Limits results to files of a specific type.           | `filetype:pdf "confidential report"` |
+| `intitle:`      | Searches for a term within the title of a page.       | `intitle:"index of" /backup`         |
+| `cache:`        | Shows the cached version of a webpage.                | `cache:example.com`                  |
+| `"search term"` | Searches for the exact phrase within quotation marks. | `"internal error" site:example.com`  |
+| `OR`            | Combines multiple search terms.                       | `inurl:admin OR inurl:login`         |
+| `-`             | Excludes specific terms from search results.          | `inurl:admin -intext:wordpress`      |
 
 By creatively combining these operators and crafting targeted queries, you can uncover sensitive documents, exposed directories, login pages, and other valuable information that may aid in your reconnaissance efforts.
 
@@ -413,11 +410,11 @@ Web archives are digital repositories that store snapshots of websites across ti
 
 The Wayback Machine, a project by the Internet Archive, has been archiving the web for over two decades, capturing billions of web pages from across the globe. This massive historical data collection can be an invaluable resource for security researchers and investigators.
 
-|Feature|Description|Use Case in Reconnaissance|
-|---|---|---|
-|`Historical Snapshots`|View past versions of websites, including pages, content, and design changes.|Identify past website content or functionality that is no longer available.|
-|`Hidden Directories`|Explore directories and files that may have been removed or hidden from the current version of the website.|Discover sensitive information or backups that were inadvertently left accessible in previous versions.|
-|`Content Changes`|Track changes in website content, including text, images, and links.|Identify patterns in content updates and assess the evolution of a website's security posture.|
+| Feature                | Description                                                                                                 | Use Case in Reconnaissance                                                                              |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `Historical Snapshots` | View past versions of websites, including pages, content, and design changes.                               | Identify past website content or functionality that is no longer available.                             |
+| `Hidden Directories`   | Explore directories and files that may have been removed or hidden from the current version of the website. | Discover sensitive information or backups that were inadvertently left accessible in previous versions. |
+| `Content Changes`      | Track changes in website content, including text, images, and links.                                        | Identify patterns in content updates and assess the evolution of a website's security posture.          |
 
 By leveraging the Wayback Machine, you can gain a historical perspective on your target's online presence, potentially revealing vulnerabilities that may have been overlooked in the current version of the website.
 
@@ -437,46 +434,46 @@ Fuzzing is commonly employed in security testing to find:
 
 ## Comparison: Brute-Forcing vs. Fuzzing
 
-|`Criteria`|`Brute-Forcing`|`Fuzzing`|
-|---|---|---|
-|`Definition`|Systematically trying all possible combinations of input data to guess a specific value.|Injecting unexpected or random data into an application to find vulnerabilities and hidden resources.|
-|`Purpose`|Crack passwords, keys, or other access credentials.|Discover application vulnerabilities, hidden files, directories, and input validation issues.|
-|`Methodology`|Exhaustive search over all possible input combinations.|Dynamic input injection to provoke unexpected application responses.|
-|`Focus`|Specific input or data, such as passwords or API keys.|General application behavior under various input conditions.|
-|`Efficiency`|Time-consuming due to exhaustive nature; less efficient for large input spaces.|More efficient in identifying unexpected behaviors and vulnerabilities with varied input.|
-|`Tools Used`|Password crackers, key recovery tools.|Web fuzzers, vulnerability scanners.|
-|`Output`|Successful match of the correct input value.|Discovery of vulnerabilities, misconfigurations, and hidden resources.|
+| `Criteria`    | `Brute-Forcing`                                                                          | `Fuzzing`                                                                                             |
+| ------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `Definition`  | Systematically trying all possible combinations of input data to guess a specific value. | Injecting unexpected or random data into an application to find vulnerabilities and hidden resources. |
+| `Purpose`     | Crack passwords, keys, or other access credentials.                                      | Discover application vulnerabilities, hidden files, directories, and input validation issues.         |
+| `Methodology` | Exhaustive search over all possible input combinations.                                  | Dynamic input injection to provoke unexpected application responses.                                  |
+| `Focus`       | Specific input or data, such as passwords or API keys.                                   | General application behavior under various input conditions.                                          |
+| `Efficiency`  | Time-consuming due to exhaustive nature; less efficient for large input spaces.          | More efficient in identifying unexpected behaviors and vulnerabilities with varied input.             |
+| `Tools Used`  | Password crackers, key recovery tools.                                                   | Web fuzzers, vulnerability scanners.                                                                  |
+| `Output`      | Successful match of the correct input value.                                             | Discovery of vulnerabilities, misconfigurations, and hidden resources.                                |
 
 ## Miscellaneous Commands
 
 Below are some useful commands that can aid in various tasks related to web fuzzing and testing.
 
-|`Command`|`Description`|
-|---|---|
-|`sudo sh -c 'echo "SERVER_IP academy.htb" >> /etc/hosts'`|Add a DNS entry for a specific IP address to the `/etc/hosts` file. This helps resolve domain names locally.|
-|`for i in $(seq 1 1000); do echo $i >> ids.txt; done`|Create a sequence wordlist from 1 to 1000. Useful for brute-forcing numerical IDs or similar patterns.|
-|`curl http://admin.academy.htb:PORT/admin/admin.php -X POST -d 'id=key' -H 'Content-Type: application/x-www-form-urlencoded'`|Use `curl` to send a POST request with specific data and headers, simulating form submissions or API calls.|
+| `Command`                                                                                                                     | `Description`                                                                                                |
+| ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `sudo sh -c 'echo "SERVER_IP academy.htb" >> /etc/hosts'`                                                                     | Add a DNS entry for a specific IP address to the `/etc/hosts` file. This helps resolve domain names locally. |
+| `for i in $(seq 1 1000); do echo $i >> ids.txt; done`                                                                         | Create a sequence wordlist from 1 to 1000. Useful for brute-forcing numerical IDs or similar patterns.       |
+| `curl http://admin.academy.htb:PORT/admin/admin.php -X POST -d 'id=key' -H 'Content-Type: application/x-www-form-urlencoded'` | Use `curl` to send a POST request with specific data and headers, simulating form submissions or API calls.  |
 
 ## Commonly Used SecLists Wordlists
 
 [SecLists](https://github.com/danielmiessler/SecLists) is a collection of multiple types of wordlists used by security researchers and penetration testers. Below is a table of some commonly used wordlists from SecLists, which can be incredibly valuable during web fuzzing.
 
-|`Wordlist`|`Description`|
-|---|---|
-|`/usr/share/seclists/Discovery/Web-Content/common.txt`|`General-Purpose Wordlist`: Contains a broad range of common directory and file names on web servers. It's an excellent starting point for fuzzing and often yields valuable results.|
-|`/usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt`|`Directory-Focused Wordlist`: A more extensive wordlist specifically focused on directory names. It's a good choice when you need a deeper dive into potential directories.|
-|`/usr/share/seclists/Discovery/Web-Content/raft-large-directories.txt`|`Large Directory Wordlist`: Boasts a massive collection of directory names compiled from various sources. It's a valuable resource for thorough fuzzing campaigns.|
-|`/usr/share/seclists/Discovery/Web-Content/big.txt`|`Comprehensive Wordlist`: A massive wordlist containing both directory and file names. Useful when you want to cast a wide net and explore all possibilities.|
+| `Wordlist`                                                                | `Description`                                                                                                                                                                         |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/usr/share/seclists/Discovery/Web-Content/common.txt`                    | `General-Purpose Wordlist`: Contains a broad range of common directory and file names on web servers. It's an excellent starting point for fuzzing and often yields valuable results. |
+| `/usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt` | `Directory-Focused Wordlist`: A more extensive wordlist specifically focused on directory names. It's a good choice when you need a deeper dive into potential directories.           |
+| `/usr/share/seclists/Discovery/Web-Content/raft-large-directories.txt`    | `Large Directory Wordlist`: Boasts a massive collection of directory names compiled from various sources. It's a valuable resource for thorough fuzzing campaigns.                    |
+| `/usr/share/seclists/Discovery/Web-Content/big.txt`                       | `Comprehensive Wordlist`: A massive wordlist containing both directory and file names. Useful when you want to cast a wide net and explore all possibilities.                         |
 
 ### Tips for Using Wordlists Effectively
 
-|`Tip`|`Explanation`|
-|---|---|
-|`Choose the Right Wordlist`|Select wordlists relevant to the target environment and technology stack for better results.|
-|`Combine Wordlists`|Use multiple wordlists together to increase the breadth of your fuzzing efforts.|
-|`Customize Wordlists`|Modify existing wordlists or create your own based on specific knowledge about the target.|
-|`Monitor Performance`|Large wordlists can be resource-intensive; monitor performance and adjust as needed.|
-|`Leverage Community Resources`|Utilize community-maintained wordlists for the latest and most effective fuzzing strategies.|
+| `Tip`                          | `Explanation`                                                                                |
+| ------------------------------ | -------------------------------------------------------------------------------------------- |
+| `Choose the Right Wordlist`    | Select wordlists relevant to the target environment and technology stack for better results. |
+| `Combine Wordlists`            | Use multiple wordlists together to increase the breadth of your fuzzing efforts.             |
+| `Customize Wordlists`          | Modify existing wordlists or create your own based on specific knowledge about the target.   |
+| `Monitor Performance`          | Large wordlists can be resource-intensive; monitor performance and adjust as needed.         |
+| `Leverage Community Resources` | Utilize community-maintained wordlists for the latest and most effective fuzzing strategies. |
 
 ## Tools for Web Fuzzing
 
@@ -484,71 +481,71 @@ Below are some useful commands that can aid in various tasks related to web fuzz
 
 `ffuf` is a fast web fuzzer written in Go that allows you to discover directories and files on web servers.
 
-|`Command`|`Description`|
-|---|---|
-|`ffuf -u http://example.com/FUZZ`|Basic fuzzing of a URL path.|
-|`ffuf -u http://example.com/FUZZ -w wordlist.txt`|Fuzz with a specific wordlist.|
-|`ffuf -u http://example.com/FUZZ -w wordlist.txt -ic`|Fuzz with a specific wordlist, automatically ignoring any comments in the wordlist.|
-|`ffuf -u http://example.com/FUZZ -w wordlist.txt -c`|Colorize the output for better readability.|
-|`ffuf -u http://example.com/FUZZ -w wordlist.txt -mc 200`|Filter results by status code (e.g., 200).|
-|`ffuf -u http://example.com/FUZZ -w wordlist.txt -mr "Welcome"`|Filter results by matching a regex pattern.|
-|`ffuf -u http://example.com/FUZZ -w wordlist.txt -e .php,.html`|Add extensions to each wordlist entry.|
-|`ffuf -u http://example.com/FUZZ -w wordlist.txt -t 50`|Set the number of threads (e.g., 50) for faster fuzzing.|
-|`ffuf -u http://example.com/FUZZ -w wordlist.txt -x http://127.0.0.1:8080`|Use a proxy for requests.|
+| `Command`                                                                  | `Description`                                                                       |
+| -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `ffuf -u http://example.com/FUZZ`                                          | Basic fuzzing of a URL path.                                                        |
+| `ffuf -u http://example.com/FUZZ -w wordlist.txt`                          | Fuzz with a specific wordlist.                                                      |
+| `ffuf -u http://example.com/FUZZ -w wordlist.txt -ic`                      | Fuzz with a specific wordlist, automatically ignoring any comments in the wordlist. |
+| `ffuf -u http://example.com/FUZZ -w wordlist.txt -c`                       | Colorize the output for better readability.                                         |
+| `ffuf -u http://example.com/FUZZ -w wordlist.txt -mc 200`                  | Filter results by status code (e.g., 200).                                          |
+| `ffuf -u http://example.com/FUZZ -w wordlist.txt -mr "Welcome"`            | Filter results by matching a regex pattern.                                         |
+| `ffuf -u http://example.com/FUZZ -w wordlist.txt -e .php,.html`            | Add extensions to each wordlist entry.                                              |
+| `ffuf -u http://example.com/FUZZ -w wordlist.txt -t 50`                    | Set the number of threads (e.g., 50) for faster fuzzing.                            |
+| `ffuf -u http://example.com/FUZZ -w wordlist.txt -x http://127.0.0.1:8080` | Use a proxy for requests.                                                           |
 
 ### gobuster
 
 `gobuster` is a tool used to brute-force URIs (directories and files) in web sites and DNS subdomains.
 
-|`Command`|`Description`|
-|---|---|
-|`gobuster dir -u http://example.com -w wordlist.txt`|Directory fuzzing using a wordlist.|
-|`gobuster dir -u http://example.com -w wordlist.txt -x .php,.html`|Fuzz with specific extensions.|
-|`gobuster dir -u http://example.com -w wordlist.txt -s 200`|Filter results by status code (e.g., 200).|
-|`gobuster dir -u http://example.com -w wordlist.txt -t 50`|Set the number of concurrent threads (e.g., 50).|
-|`gobuster dir -u http://example.com -w wordlist.txt -o results.txt`|Output results to a file.|
-|`gobuster dns -d example.com -w subdomains.txt`|Fuzz DNS subdomains using a wordlist.|
-|`gobuster dns -d example.com -w subdomains.txt -i`|Show IP addresses of discovered subdomains.|
-|`gobuster dns -d example.com -w subdomains.txt -z`|Silent mode; suppress output except for results.|
+| `Command`                                                           | `Description`                                    |
+| ------------------------------------------------------------------- | ------------------------------------------------ |
+| `gobuster dir -u http://example.com -w wordlist.txt`                | Directory fuzzing using a wordlist.              |
+| `gobuster dir -u http://example.com -w wordlist.txt -x .php,.html`  | Fuzz with specific extensions.                   |
+| `gobuster dir -u http://example.com -w wordlist.txt -s 200`         | Filter results by status code (e.g., 200).       |
+| `gobuster dir -u http://example.com -w wordlist.txt -t 50`          | Set the number of concurrent threads (e.g., 50). |
+| `gobuster dir -u http://example.com -w wordlist.txt -o results.txt` | Output results to a file.                        |
+| `gobuster dns -d example.com -w subdomains.txt`                     | Fuzz DNS subdomains using a wordlist.            |
+| `gobuster dns -d example.com -w subdomains.txt -i`                  | Show IP addresses of discovered subdomains.      |
+| `gobuster dns -d example.com -w subdomains.txt -z`                  | Silent mode; suppress output except for results. |
 
 ### wenum (Wfuzz Fork)
 
 `wenum` is a fork of `wfuzz`, a versatile web application fuzzer for testing web security.
 
-|`Command`|`Description`|
-|---|---|
-|`wenum -c -w wordlist.txt --hc 404 -u http://example.com/FUZZ`|Basic fuzzing excluding 404 responses.|
-|`wenum -c -w wordlist.txt -d 'username=FUZZ&password=secret' -u http://example.com/login`|Fuzz POST data in a form.|
-|`wenum -c -w wordlist.txt -b 'session=12345' -u http://example.com/FUZZ`|Use a specific cookie for requests.|
-|`wenum -c -w wordlist.txt -H 'User-Agent: Wenum' -u http://example.com/FUZZ`|Add a custom header to requests.|
-|`wenum -c -w wordlist.txt -t 50 -u http://example.com/FUZZ`|Set the number of threads (e.g., 50) for faster fuzzing.|
-|`wenum -c -w wordlist.txt -X PUT -u http://example.com/FUZZ`|Fuzz using a specific HTTP method (e.g., PUT).|
-|`wenum -c -w wordlist.txt --hs 50 -u http://example.com/FUZZ`|Filter responses by content length (e.g., 50 bytes).|
+| `Command`                                                                                 | `Description`                                            |
+| ----------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| `wenum -c -w wordlist.txt --hc 404 -u http://example.com/FUZZ`                            | Basic fuzzing excluding 404 responses.                   |
+| `wenum -c -w wordlist.txt -d 'username=FUZZ&password=secret' -u http://example.com/login` | Fuzz POST data in a form.                                |
+| `wenum -c -w wordlist.txt -b 'session=12345' -u http://example.com/FUZZ`                  | Use a specific cookie for requests.                      |
+| `wenum -c -w wordlist.txt -H 'User-Agent: Wenum' -u http://example.com/FUZZ`              | Add a custom header to requests.                         |
+| `wenum -c -w wordlist.txt -t 50 -u http://example.com/FUZZ`                               | Set the number of threads (e.g., 50) for faster fuzzing. |
+| `wenum -c -w wordlist.txt -X PUT -u http://example.com/FUZZ`                              | Fuzz using a specific HTTP method (e.g., PUT).           |
+| `wenum -c -w wordlist.txt --hs 50 -u http://example.com/FUZZ`                             | Filter responses by content length (e.g., 50 bytes).     |
 
 ### feroxbuster
 
 `feroxbuster` is a tool designed for recursive content discovery and web fuzzing.
 
-|`Command`|`Description`|
-|---|---|
-|`feroxbuster -u http://example.com -w wordlist.txt`|Basic URL fuzzing with a wordlist.|
-|`feroxbuster -u http://example.com -w wordlist.txt -x`|Include specified file extensions in fuzzing.|
-|`feroxbuster -u http://example.com -w wordlist.txt -C 404`|Exclude responses with status code 404.|
-|`feroxbuster -u http://example.com -w wordlist.txt -t 50`|Set the number of concurrent threads (e.g., 50).|
-|`feroxbuster -u http://example.com -w wordlist.txt --depth 3`|Set maximum recursion depth (e.g., 3 levels deep).|
-|`feroxbuster -u http://example.com -w wordlist.txt -o results.txt`|Save output to a file.|
-|`feroxbuster -u http://example.com -w wordlist.txt --no-recursion`|Disable recursion into discovered directories.|
-|`feroxbuster -u http://example.com -w wordlist.txt --redirect`|Follow redirects automatically.|
+| `Command`                                                          | `Description`                                      |
+| ------------------------------------------------------------------ | -------------------------------------------------- |
+| `feroxbuster -u http://example.com -w wordlist.txt`                | Basic URL fuzzing with a wordlist.                 |
+| `feroxbuster -u http://example.com -w wordlist.txt -x`             | Include specified file extensions in fuzzing.      |
+| `feroxbuster -u http://example.com -w wordlist.txt -C 404`         | Exclude responses with status code 404.            |
+| `feroxbuster -u http://example.com -w wordlist.txt -t 50`          | Set the number of concurrent threads (e.g., 50).   |
+| `feroxbuster -u http://example.com -w wordlist.txt --depth 3`      | Set maximum recursion depth (e.g., 3 levels deep). |
+| `feroxbuster -u http://example.com -w wordlist.txt -o results.txt` | Save output to a file.                             |
+| `feroxbuster -u http://example.com -w wordlist.txt --no-recursion` | Disable recursion into discovered directories.     |
+| `feroxbuster -u http://example.com -w wordlist.txt --redirect`     | Follow redirects automatically.                    |
 
 ## Tips for Effective Web Fuzzing
 
-|`Tip`|`Explanation`|
-|---|---|
-|`Use Comprehensive Wordlists`|The quality of your wordlist can significantly impact results; choose or create wordlists relevant to the target.|
-|`Filter Unwanted Responses`|Use status codes or response size filtering to focus on meaningful results and reduce noise.|
-|`Adjust Thread Count`|Increase thread count for faster fuzzing, but be mindful of server capabilities to avoid overloading.|
-|`Monitor Server Responses`|Pay attention to anomalies or unexpected behavior in server responses, indicating potential vulnerabilities.|
-|`Fuzz with Various HTTP Methods`|Test different HTTP methods (GET, POST, PUT, DELETE) to uncover potential vulnerabilities in all endpoints.|
+| `Tip`                            | `Explanation`                                                                                                     |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `Use Comprehensive Wordlists`    | The quality of your wordlist can significantly impact results; choose or create wordlists relevant to the target. |
+| `Filter Unwanted Responses`      | Use status codes or response size filtering to focus on meaningful results and reduce noise.                      |
+| `Adjust Thread Count`            | Increase thread count for faster fuzzing, but be mindful of server capabilities to avoid overloading.             |
+| `Monitor Server Responses`       | Pay attention to anomalies or unexpected behavior in server responses, indicating potential vulnerabilities.      |
+| `Fuzz with Various HTTP Methods` | Test different HTTP methods (GET, POST, PUT, DELETE) to uncover potential vulnerabilities in all endpoints.       |
 
 ## Web APIs: REST, SOAP, and GraphQL
 
@@ -568,72 +565,72 @@ Each type has its own unique characteristics, advantages, and use cases.
 
 `REST` is an architectural style that uses standard HTTP methods to access and manipulate resources on a server. It is known for its simplicity, scalability, and statelessness.
 
-|`Feature`|`Description`|
-|---|---|
-|`Protocol`|Uses HTTP/HTTPS.|
-|`Data Format`|Typically JSON, but can also use XML, HTML, or plain text.|
-|`Stateless`|Each request from a client to a server must contain all the information needed.|
-|`CRUD Operations`|Uses HTTP methods: GET, POST, PUT, DELETE.|
-|`Scalability`|Highly scalable due to its stateless nature.|
-|`Caching`|Supports caching mechanisms to improve performance.|
-|`URL Structure`|Uses endpoints that represent resources, e.g., `/api/users/{id}`.|
-|`Advantages`|Simplicity, flexibility, scalability.|
-|`Disadvantages`|Can lead to over-fetching or under-fetching data.|
+| `Feature`         | `Description`                                                                   |
+| ----------------- | ------------------------------------------------------------------------------- |
+| `Protocol`        | Uses HTTP/HTTPS.                                                                |
+| `Data Format`     | Typically JSON, but can also use XML, HTML, or plain text.                      |
+| `Stateless`       | Each request from a client to a server must contain all the information needed. |
+| `CRUD Operations` | Uses HTTP methods: GET, POST, PUT, DELETE.                                      |
+| `Scalability`     | Highly scalable due to its stateless nature.                                    |
+| `Caching`         | Supports caching mechanisms to improve performance.                             |
+| `URL Structure`   | Uses endpoints that represent resources, e.g., `/api/users/{id}`.               |
+| `Advantages`      | Simplicity, flexibility, scalability.                                           |
+| `Disadvantages`   | Can lead to over-fetching or under-fetching data.                               |
 
 #### REST Fuzzing Tips:
 
-|`Tip`|`Explanation`|
-|---|---|
-|`Test All HTTP Methods`|Ensure all CRUD operations are tested, as vulnerabilities might exist in any of them.|
-|`Validate Input Fields`|Fuzz input fields with unexpected data types and formats to uncover validation issues.|
-|`Examine Error Messages`|Analyze error messages for information disclosure or unintended behavior.|
-|`Test Authentication Mechanisms`|Check for improper authentication and authorization controls.|
-|`Explore API Rate Limits`|Test rate limits and throttling controls to ensure the API handles requests properly.|
-|`Use Comprehensive Payloads`|Leverage a variety of payloads (SQLi, XSS) to test for potential security flaws.|
-|`Check Resource Representation`|Test different resource representations (JSON, XML) for consistency and security flaws.|
+| `Tip`                            | `Explanation`                                                                           |
+| -------------------------------- | --------------------------------------------------------------------------------------- |
+| `Test All HTTP Methods`          | Ensure all CRUD operations are tested, as vulnerabilities might exist in any of them.   |
+| `Validate Input Fields`          | Fuzz input fields with unexpected data types and formats to uncover validation issues.  |
+| `Examine Error Messages`         | Analyze error messages for information disclosure or unintended behavior.               |
+| `Test Authentication Mechanisms` | Check for improper authentication and authorization controls.                           |
+| `Explore API Rate Limits`        | Test rate limits and throttling controls to ensure the API handles requests properly.   |
+| `Use Comprehensive Payloads`     | Leverage a variety of payloads (SQLi, XSS) to test for potential security flaws.        |
+| `Check Resource Representation`  | Test different resource representations (JSON, XML) for consistency and security flaws. |
 
 ### SOAP (Simple Object Access Protocol)
 
 `SOAP` is a protocol for exchanging structured information in web services. It uses XML as its message format and can operate over various protocols like HTTP, SMTP, or TCP.
 
-|`Feature`|`Description`|
-|---|---|
-|`Protocol`|Protocol-independent but often used with HTTP/HTTPS.|
-|`Data Format`|Exclusively XML.|
-|`Stateful/Stateless`|Can be either stateful or stateless.|
-|`WS-Security`|Built-in security features for message integrity and confidentiality.|
-|`Error Handling`|Uses specific error codes and messages.|
-|`Complexity`|More complex due to extensive standards and specifications.|
-|`Extensibility`|Highly extensible via WS-* standards.|
-|`Advantages`|Strong security, reliability, and extensibility.|
-|`Disadvantages`|More complex and less flexible compared to REST.|
+| `Feature`            | `Description`                                                         |
+| -------------------- | --------------------------------------------------------------------- |
+| `Protocol`           | Protocol-independent but often used with HTTP/HTTPS.                  |
+| `Data Format`        | Exclusively XML.                                                      |
+| `Stateful/Stateless` | Can be either stateful or stateless.                                  |
+| `WS-Security`        | Built-in security features for message integrity and confidentiality. |
+| `Error Handling`     | Uses specific error codes and messages.                               |
+| `Complexity`         | More complex due to extensive standards and specifications.           |
+| `Extensibility`      | Highly extensible via WS-\* standards.                                |
+| `Advantages`         | Strong security, reliability, and extensibility.                      |
+| `Disadvantages`      | More complex and less flexible compared to REST.                      |
 
 #### SOAP Fuzzing Tips:
 
-|`Tip`|`Explanation`|
-|---|---|
-|`Analyze WSDL Files`|Use WSDL (Web Services Description Language) files to understand the service's operations and inputs.|
-|`Validate XML Schema`|Test XML inputs against the schema to identify validation flaws.|
-|`Check for XML Injection`|Fuzz XML data to test for injection vulnerabilities.|
-|`Test SOAP Headers`|Fuzz SOAP headers to find potential security issues or misconfigurations.|
-|`Evaluate WS-Security Implementations`|Ensure security implementations are robust and correctly configured.|
-|`Test Transport Security`|Verify that transport-level security (e.g., HTTPS) is enforced and properly implemented.|
-|`Examine SOAP Faults`|Analyze SOAP fault messages for potential information leakage.|
+| `Tip`                                  | `Explanation`                                                                                         |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `Analyze WSDL Files`                   | Use WSDL (Web Services Description Language) files to understand the service's operations and inputs. |
+| `Validate XML Schema`                  | Test XML inputs against the schema to identify validation flaws.                                      |
+| `Check for XML Injection`              | Fuzz XML data to test for injection vulnerabilities.                                                  |
+| `Test SOAP Headers`                    | Fuzz SOAP headers to find potential security issues or misconfigurations.                             |
+| `Evaluate WS-Security Implementations` | Ensure security implementations are robust and correctly configured.                                  |
+| `Test Transport Security`              | Verify that transport-level security (e.g., HTTPS) is enforced and properly implemented.              |
+| `Examine SOAP Faults`                  | Analyze SOAP fault messages for potential information leakage.                                        |
 
 ### GraphQL
 
 `GraphQL` is a query language and runtime for APIs that allows clients to request specific data and define the structure of the response.
 
-|`Feature`|`Description`|
-|---|---|
-|`Protocol`|Uses HTTP/HTTPS, typically over POST requests.|
-|`Data Format`|JSON-based queries and responses.|
-|`Stateful/Stateless`|Stateless architecture.|
-|`Query Flexibility`|Clients can request exactly what they need, minimizing over-fetching and under-fetching.|
-|`Single Endpoint`|Typically uses a single endpoint for all operations.|
-|`Introspection`|Allows clients to query the API schema for available operations and data types.|
-|`Advantages`|Efficiency, flexibility, and powerful developer tooling.|
-|`Disadvantages`|Potential for complex queries leading to performance issues if not properly managed.|
+| `Feature`            | `Description`                                                                            |
+| -------------------- | ---------------------------------------------------------------------------------------- |
+| `Protocol`           | Uses HTTP/HTTPS, typically over POST requests.                                           |
+| `Data Format`        | JSON-based queries and responses.                                                        |
+| `Stateful/Stateless` | Stateless architecture.                                                                  |
+| `Query Flexibility`  | Clients can request exactly what they need, minimizing over-fetching and under-fetching. |
+| `Single Endpoint`    | Typically uses a single endpoint for all operations.                                     |
+| `Introspection`      | Allows clients to query the API schema for available operations and data types.          |
+| `Advantages`         | Efficiency, flexibility, and powerful developer tooling.                                 |
+| `Disadvantages`      | Potential for complex queries leading to performance issues if not properly managed.     |
 
 #### GraphQL Fuzzing Tips:
 

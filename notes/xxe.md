@@ -68,10 +68,10 @@ From Tanuki (XInclude) on Bugforge
 - [ ] Try to access sensitive local files (/etc/shadow, web.config, application.properties, etc.)
 - [ ] Attempt to read source code files
 - [ ] Test for directory traversal combined with XXE
-- [ ](e.g.,%20[http://169.254.169.254/latest/meta-data/))
+- [ ] Try to access cloud metadata endpoints (e.g., `http://169.254.169.254/latest/meta-data/`)
 - [ ] Attempt to retrieve Windows credential files (SAM, SYSTEM hives)
 
-### SSRF via XXE
+### [SSRF](ssrf.md) via XXE
 
 - [ ] Test for Server-Side Request Forgery by targeting internal network resources
 - [ ] Attempt to scan internal ports using XXE
@@ -89,7 +89,7 @@ From Tanuki (XInclude) on Bugforge
 ### Advanced Exploitation
 
 - [ ] Test XXE in different content types (SOAP, SVG, DOCX, XLSX, PDF, etc.)
-- [ ] Check for XXE in file upload functionality (especially office documents)
+- [ ] Check for XXE in [file upload](file-upload.md) functionality (especially office documents)
 - [ ] Test XInclude attacks when direct entity injection is blocked
 - [ ] Attempt XXE through modified content-type headers (e.g., changing JSON to XML)
 - [ ] Test for XXE in SAML assertions and responses

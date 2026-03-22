@@ -86,6 +86,25 @@ Command injection vulnerabilities allow an attacker to execute arbitrary OS comm
 | **Encoded Commands**                                                                                         |                                          |
 | `[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes('whoami'))`                              | Encode a string with base64              |
 | `iex "$([System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String('dwBoAG8AYQBtAGkA')))"` | Execute b64 encoded string               |
+|                                                                                                              |                                          |
+
+## Other Injection Contexts
+
+Such operators can be used for various injection types, like [SQL injection](sql-injection/sql-injection.md), [LDAP injection](ldap-injection.md), [XSS](xss.md), [SSRF](ssrf.md), [XXE](xxe.md), etc. We have created a list of the most common operators that can be used for injections:
+
+| **Injection Type**                      | **Operators**                                     |
+| --------------------------------------- | ------------------------------------------------- |
+| SQL Injection                           | `'` `,` `;` `--` `/* */`                          |
+| Command Injection                       | `;` `&&`                                          |
+| LDAP Injection                          | `*` `(` `)` `&` `\|`                              |
+| XPath Injection                         | `'` `or` `and` `not` `substring` `concat` `count` |
+| OS Command Injection                    | `;` `&` `\|`                                      |
+| Code Injection                          | `'` `;` `--` `/* */` `$()` `${}` `#{}` `%{}` `^`  |
+| Directory Traversal/File Path Traversal | `../` `..\\` `%00`                                |
+| Object Injection                        | `;` `&` `\|`                                      |
+| XQuery Injection                        | `'` `;` `--` `/* */`                              |
+| Shellcode Injection                     | `\x` `\u` `%u` `%n`                               |
+| Header Injection                        | `\n` `\r\n` `\t` `%0d` `%0a` `%09`                |
 
 ---
 

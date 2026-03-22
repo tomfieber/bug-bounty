@@ -96,7 +96,7 @@ target[key] = source[key]
 
 ## Labs
 
-### DOM XSS via client-side prototype pollution
+### DOM [XSS](xss.md) via client-side prototype pollution
 
 ![searchlogger.js](attachments/prototype-pollution/file-20260214151048383%201.png)
 

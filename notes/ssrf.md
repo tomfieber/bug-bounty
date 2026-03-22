@@ -120,7 +120,7 @@ http://169.254.169.254/metadata/v1.json
 
 Useful when the application validates the resolved IP on first request but uses a different resolution on the actual fetch.
 
-- [ ](e.g.,%20[rbndr.us)) to alternate between a public IP and `127.0.0.1`
+- [ ] Use a DNS rebinding service (e.g., [rbndr.us](https://lock.cmpxchg8b.com/rebinder.html)) to alternate between a public IP and `127.0.0.1`
 - [ ] Race condition: first DNS lookup passes the whitelist check, second resolves to internal IP
 
 ## Common URI Schemes
@@ -135,4 +135,3 @@ Useful when the application validates the resolved IP on first request but uses 
 | `sftp://`              | SFTP connections                   |
 | `ldap://`              | LDAP queries                       |
 | `tftp://`              | TFTP requests                      |
-

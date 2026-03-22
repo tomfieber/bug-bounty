@@ -21,7 +21,7 @@
 | Null bytes           | `%00` between characters |
 | Overlong UTF-8       | `%c0%27`                 |
 
-## SQL Injection WAF Bypass
+## [SQL Injection](sql-injection/sql-injection.md) WAF Bypass
 
 ```
 /*!50000SELECT*/ @@version   -- MySQL version-specific comment
@@ -31,7 +31,7 @@ CONCAT(0x73656C656374)        -- hex encoding
 %55nion(%53elect)             -- partial URL encoding
 ```
 
-## XSS WAF Bypass
+## [XSS](xss.md) WAF Bypass
 
 ```html
 <svg/onload=alert(1)>

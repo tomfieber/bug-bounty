@@ -15,18 +15,17 @@ File upload vulnerabilities occur when a web application allows users to upload 
     - Allowed MIME type with disallowed content-type
     - Allowed MIME/content-type with disallowed extension
     - Disallowed MIME/content-type with allowed extension
-- [ ] Check partial uploads -[ XSS](notes/xss.md), [XXE](xxe.md)
+- [ ] Check partial uploads — [XSS](xss.md), [XXE](xxe.md)
   - Can we change content type to text/html
   - Check for docx uploads
   - Check SVG uploads
 - [ ] Check for path traversal in the filename
 - [ ] Check for injections in filename
-  - [command injection](command-injection.md)
-  - [xss](xss.md)
-  - [sql-injection](sql-injection.md)
+  - [Command injection](command-injection.md)
+  - [XSS](xss.md)
+  - [SQL injection](sql-injection/sql-injection.md)
 - [ ] Check if the upload directory is disclosed
 - [ ] Try character injections before and after extension
-- [ ] 
 
 ## Web Shells
 
@@ -60,6 +59,19 @@ File upload vulnerabilities occur when a web application allows users to upload 
 | **Content/Type Bypass**                                                                                                                    |                                              |
 | [Content-Types](https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/web-all-content-types.txt)                    | List of All Content-Types                    |
 | [File Signatures](https://en.wikipedia.org/wiki/List_of_file_signatures)                                                                   | List of File Signatures/Magic Bytes          |
+
+### Create extensions wordlist
+
+```bash
+for char in '%20' '%0a' '%00' '%0d0a' '/' '.\\' '.' '…' ':'; do
+    for ext in '.php' '.phps'; do
+        echo "shell$char$ext.jpg" >> wordlist.txt
+        echo "shell$ext$char.jpg" >> wordlist.txt
+        echo "shell.jpg$char$ext" >> wordlist.txt
+        echo "shell.jpg$ext$char" >> wordlist.txt
+    done
+done
+```
 
 ## Limited Uploads
 

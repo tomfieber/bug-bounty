@@ -102,7 +102,7 @@ JWTs are used for authentication and session management. Vulnerabilities arise f
 > eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6InRpY2FycGkifQ.bsSwqj2c2uI9n7-ajmi3ixVGhPUiY7jO9SUn9dm15Po
 > ```
 
-# Checks
+## Checks
 
 - [ ] Does the server validate the signature?
 - [ ] Does it accept ‘none’ algorithm?
