@@ -102,7 +102,7 @@ See [JavaScript Deobfuscation](notes/javascript-deobfuscation.md) for tools and 
 
 - [ ] Is input reflected anywhere on the page? In what context?
 - [ ] Check for [XSS](notes/xss.md) (reflected, stored, DOM-based)
-- [ ] Check for [SQL injection](notes/sql-injection/sql-injection.md)
+- [ ] Check for [SQL injection](notes/sql-injection.md)
 - [ ] Check for [SSTI](notes/ssti.md)
 - [ ] Check for [SSI injection](notes/ssi.md)
 - [ ] Check for [command injection](notes/command-injection.md) — especially in fields that interact with the OS (filenames, hostnames, ping/traceroute tools, PDF generators)
@@ -137,7 +137,7 @@ See [JavaScript Deobfuscation](notes/javascript-deobfuscation.md) for tools and 
 ## Query Strings & Parameters
 
 - [ ] Check for [file inclusion](notes/file-inclusion.md) (LFI/RFI)
-- [ ] Check for [SQL injection](notes/sql-injection/sql-injection.md)
+- [ ] Check for [SQL injection](notes/sql-injection.md)
 - [ ] Monitor network tab for secondary API requests: `?user=123` → `/api/user/123`
   - Check for [client-side path traversal](notes/client-side-path-traversal.md)
 - [ ] Check for [SSRF](notes/ssrf.md) in any URL/redirect parameters

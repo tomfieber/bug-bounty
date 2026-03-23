@@ -8,7 +8,7 @@ Fuzzing is commonly employed in security testing to find:
 
 - Hidden directories and files
 - Insecure APIs and endpoints
-- [SQL injection](sql-injection/sql-injection.md) points
+- [SQL injection](sql-injection.md) points
 - [Cross-site scripting (XSS)](xss.md) vulnerabilities
 - [Command injection](command-injection.md) flaws
 

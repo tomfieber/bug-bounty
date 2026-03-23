@@ -90,7 +90,7 @@ Command injection vulnerabilities allow an attacker to execute arbitrary OS comm
 
 ## Other Injection Contexts
 
-Such operators can be used for various injection types, like [SQL injection](sql-injection/sql-injection.md), [LDAP injection](ldap-injection.md), [XSS](xss.md), [SSRF](ssrf.md), [XXE](xxe.md), etc. We have created a list of the most common operators that can be used for injections:
+Such operators can be used for various injection types, like [SQL injection](sql-injection.md), [LDAP injection](ldap-injection.md), [XSS](xss.md), [SSRF](ssrf.md), [XXE](xxe.md), etc. We have created a list of the most common operators that can be used for injections:
 
 | **Injection Type**                      | **Operators**                                     |
 | --------------------------------------- | ------------------------------------------------- |

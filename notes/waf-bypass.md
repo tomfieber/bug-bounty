@@ -21,7 +21,7 @@
 | Null bytes           | `%00` between characters |
 | Overlong UTF-8       | `%c0%27`                 |
 
-## [SQL Injection](sql-injection/sql-injection.md) WAF Bypass
+## [SQL Injection](sql-injection.md) WAF Bypass
 
 ```
 /*!50000SELECT*/ @@version   -- MySQL version-specific comment

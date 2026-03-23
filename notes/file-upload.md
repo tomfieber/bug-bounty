@@ -23,7 +23,7 @@ File upload vulnerabilities occur when a web application allows users to upload 
 - [ ] Check for injections in filename
   - [Command injection](command-injection.md)
   - [XSS](xss.md)
-  - [SQL injection](sql-injection/sql-injection.md)
+  - [SQL injection](sql-injection.md)
 - [ ] Check if the upload directory is disclosed
 - [ ] Try character injections before and after extension
 
