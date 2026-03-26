@@ -56,7 +56,7 @@ See [JavaScript Deobfuscation](notes/javascript-deobfuscation.md) for tools and 
 
 - [ ] Check for weak credentials
 - [ ] Check for default credentials
-- [ ] Test [Brute force](notes/brute-forcing.md)
+- [ ] Test [Brute force](notes/web/brute-forcing.md)
   - Check for rate limiting
   - Check for account lockout
 - [ ] Check for username enumeration
@@ -110,7 +110,7 @@ See [JavaScript Deobfuscation](notes/javascript-deobfuscation.md) for tools and 
 - [ ] Check for [LDAP injection](notes/ldap-injection.md) on directory-connected forms
 - [ ] Check for [XPath injection](notes/xpath-injection.md) on XML-backed forms
 - [ ] Check request content-type
-  - Check for [XXE](notes/xxe.md)
+  - Check for [XXE](notes/web/xxe.md)
   - Try converting JSON to XML
 - [ ] Check for [prototype pollution](notes/prototype-pollution.md) in JSON inputs
 
@@ -119,7 +119,7 @@ See [JavaScript Deobfuscation](notes/javascript-deobfuscation.md) for tools and 
 ## State-Changing Actions
 
 - [ ] Check for [CSRF](notes/csrf.md)
-- [ ] Check for [broken access control / IDOR](notes/broken-access-control.md)
+- [ ] Check for [broken access control / IDOR](notes/web/broken-access-control.md)
 - [ ] Check for [race conditions](notes/race-conditions.md) on critical operations (balance transfers, coupon redemption, invite acceptance)
 - [ ] Check for missing confirmation steps on destructive actions (account deletion, data export)
 
@@ -139,7 +139,7 @@ See [JavaScript Deobfuscation](notes/javascript-deobfuscation.md) for tools and 
 - [ ] Check for [file inclusion](notes/file-inclusion.md) (LFI/RFI)
 - [ ] Check for [SQL injection](notes/sql-injection.md)
 - [ ] Monitor network tab for secondary API requests: `?user=123` → `/api/user/123`
-  - Check for [client-side path traversal](notes/client-side-path-traversal.md)
+  - Check for [client-side path traversal](notes/web/client-side-path-traversal.md)
 - [ ] Check for [SSRF](notes/ssrf.md) in any URL/redirect parameters
 - [ ] Check for HTTP parameter pollution (duplicate params: `?id=1&id=2`)
 
@@ -170,7 +170,7 @@ See [JavaScript Deobfuscation](notes/javascript-deobfuscation.md) for tools and 
   - Make sure this is not intended behavior before reporting this. This is common in S3 buckets, but there's very little (if any) impact.
 - [ ] Can we upload an SVG
   - Check for [XSS](notes/xss.md) depending on where the file is uploaded. Remember that XSS executes in the context of the site.
-  - Check for [XXE](notes/xxe.md) within the SVG if there is some kind of server-side functionality
+  - Check for [XXE](notes/web/xxe.md) within the SVG if there is some kind of server-side functionality
 - [ ] Keep an eye out for CSP bypasses or uses in other parts of the app
   - If we can upload JS and use that to bypass CSP with [XSS](notes/xss.md) in another part of the app
   - Is there another functionality that uses XML files from uploads? SVGs?
@@ -210,7 +210,7 @@ See [File Upload](notes/file-upload.md) for payloads, bypasses, and web shells.
 
 ## API Endpoints
 
-- [ ] Check the [API Testing](notes/api-testing.md) cheatsheet
+- [ ] Check the [API Testing](notes/web/api-testing.md) cheatsheet
 - [ ] Check for unauthenticated access to API endpoints
 - [ ] Test all HTTP methods (GET, POST, PUT, DELETE, PATCH, OPTIONS)
 - [ ] Check for mass assignment in POST/PUT requests
