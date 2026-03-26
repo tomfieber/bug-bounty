@@ -1,3 +1,5 @@
+# Metasploit
+
 ## MSFconsole Commands
 
 Show all exploits within the Framework.
@@ -36,7 +38,7 @@ Load an exploit or module (example: use windows/smb/psexec).
 use <name>
 ```
 
-Load an exploit by using the index number displayed after the search <name> command.
+Load an exploit by using the index number displayed after the `search $name` command.
 
 ```
 use <number>

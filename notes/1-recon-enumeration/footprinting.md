@@ -1,3 +1,5 @@
+# Footprinting
+
 > See also: [Attacking Common Services](attacking-common-services.md) for offensive techniques against these services.
 
 ## Infrastructure-based Enumeration
