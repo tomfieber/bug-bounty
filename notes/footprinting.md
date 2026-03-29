@@ -1,3 +1,14 @@
+---
+tags:
+  - shodan
+  - certificate-transparency
+  - ftp
+  - smb
+  - nfs
+  - rpc
+course: CPTS
+---
+
 # Footprinting
 
 > See also: [Attacking Common Services](attacking-common-services.md) for offensive techniques against these services.
@@ -15,6 +26,21 @@ Scan each IP address in a list using Shodan.
 ```
 for i in $(cat ip-addresses.txt);do shodan host $i;done
 ```
+
+```bash
+for i in $(cat subdomainlist);do host $i | grep "has address" | grep inlanefreight.com | cut -d" " -f4 >> ip-addresses.txt;done
+$ for i in $(cat ip-addresses.txt);do shodan host $i;done
+```
+
+Find company hosted servers
+
+```bash
+for i in $(cat subdomainlist);do host $i | grep "has address" | grep inlanefreight.com | cut -d" " -f1,4;done
+```
+
+Domain Information
+
+- [Domain Glass](https://domain.glass/)
 
 ---
 
@@ -115,6 +141,19 @@ Unmount the specific NFS share.
 ```
 umount ./target-NFS
 ```
+
+
+##### RPC
+
+Get initial RPC info
+
+```
+rpcinfo $ip
+```
+
+Hacktricks article on testing RPCBind
+
+[Pentesting Portmapper](https://hacktricks.wiki/en/network-services-pentesting/pentesting-rpcbind.html)
 
 ##### DNS
 

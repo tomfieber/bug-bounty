@@ -1,3 +1,8 @@
+---
+tags:
+course:
+---
+
 # Web Application Security Testing Checklist
 
 ## Contents

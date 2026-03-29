@@ -58,6 +58,14 @@ Uses Linux-based commands curl, awk, grep and tee to download a list of file ext
 curl -s https://fileinfo.com/filetypes/compressed | html2text | awk '{print tolower($1)}' | grep "\." | tee -a compressed_ext.txt
 ```
 
+John single crack mode
+
+```
+john --single passwd
+```
+
+
+
 ---
 
 ## Remote Password Attacks
@@ -448,4 +456,4 @@ for i in $(cat rockyou.txt);do openssl enc -aes-256-cbc -d -in GZIP.gzip -k $i 2
 
 ---
 
-> For pivoting and tunneling techniques, see [Pivoting, Tunneling & Forwarding](../2-exploitation-lateral-movement/pivoting-tunneling-forwarding.md).
+> For pivoting and tunneling techniques, see [Pivoting, Tunneling & Forwarding](pivoting-tunneling-forwarding.md).

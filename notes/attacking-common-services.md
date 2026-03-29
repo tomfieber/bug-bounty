@@ -1,3 +1,15 @@
+---
+tags:
+  - ftp
+  - smb
+  - sql
+  - rdp
+  - dns
+  - email
+course: CPTS
+---
+# Attacking Common Services
+
 > See also: [Footprinting](footprinting.md) for enumeration commands against these services.
 
 ## Attacking FTP

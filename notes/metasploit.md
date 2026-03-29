@@ -1,3 +1,12 @@
+---
+tags:
+  - metasploit
+  - msfvenom
+  - msfconsole
+  - meterpreter
+course: CPTS
+---
+
 # Metasploit
 
 ## MSFconsole Commands

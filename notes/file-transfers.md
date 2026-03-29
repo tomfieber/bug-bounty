@@ -1,3 +1,14 @@
+---
+tags:
+  - powershell
+  - certutil
+  - bitsadmin
+  - wget
+  - curl
+  - Invoke-WebRequest
+course: CPTS
+---
+
 # File Transfers
 
 Download a file with PowerShell
